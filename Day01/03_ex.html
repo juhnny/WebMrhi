@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>03 Ex</title>
+        <meta charset="utf-8">
+    </head>
+    <body id = "body">
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul>
+        <hr>
+        <ol>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+        <hr>
+        <dl>
+            <dt>aaa</dt>
+            <dd>- 이것은 Definition Data 입니다.</dd>
+            <dt>bbb</dt>
+            <dd>- 이것은 Definition Data 입니다.</dd>
+            <dt>ccc</dt>
+            <dd>- 이것은 Definition Data 입니다.</dd>
+        </dl>
+        <hr>
+
+        <!-- anchor 요소 -->
+        <!-- 인라인 요소임 -->
+        
+        <!-- 절대주소 사용 -->
+        <!-- target 속성에 따라 열리는 곳이 달라진다. -->
+        <a href="http://www.naver.com" target="_self">Naver</a><br> 
+        <a href="http://www.naver.com" target="_blank">Naver</a><br>
+        <!-- 상대주소 사용 -->
+        <a href="./" target="_top">Current directory</a><br>
+        <a href="../" target="_top">Upper directory</a><br>
+        <a href="./02_text.html" target="_top">02_text.html</a><br>
+        <a href="#body">Top</a>
+
+        <!-- 그냥 anchor 요소만 쓰면 요소간 간격이 너무 좁아서 
+        모바일웹을 위해서 간격을 갖도록 p요소를 함께 쓰기도 한다. -->
+        <p><a href="#body">Top</a></p>
+        <p><a href="#body">Top</a></p>
+        <p><a href="#body">Top</a></p>
+
+        <!-- 이메일 링크 -->
+        <p><a href="mailto:iwibest@naver.com">iwibest@naver.com</a></p>
+
+        <!-- 이미지 보기 -->
+        <p><a href="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" >이미지 링크</a></p>
+
+        <!-- 웹브라우저로 볼 수 없는 문서는 다운로드 창이 열린다. -->
+        <p><a href="./test.zip">test.zip 링크</a></p>
+
+        <hr>
+
+        <!-- img 태그 -->
+        <!-- 인라인 요소임 -->
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="구글 로고">
+        <img src="./googlelogo.png" alt="구글 로고">
+        <img src="./ggg.png" alt="구글 로고 대체 글씨">
+        <img src="./googlelogo.png" width="100">
+        <hr>
+
+        <!-- a + img -->
+        <!-- href에 값이 없으면 현재 문서를 지칭. 현재 문서가 다시 열린다. -->
+        <a href="./googlelogo.png"><img src="./googlelogo.png" alt="google logo"></a>
+        <a href="./googlelogo.html"><img src="./googlelogo.png" alt="google logo"></a>
+</html>
