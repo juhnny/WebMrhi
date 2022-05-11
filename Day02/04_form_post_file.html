@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>04 form POST file</title>
+</head>
+<body>
+    <fieldset>
+        <legend>파일 전송</legend>
+        <!-- 파일전송할 때는 반드시 enctype 지정 - multipart/form-data -->
+        <!-- 기본값은 application/x-www-form-urlencoded -->
+        <form action="./postFile.php" method="post" enctype="multipart/form-data">
+            <!-- accept 형식을 지정하면 그 형식의 파일들을 먼저 보여주지만 모든 파일 보기로 바꿀 수 있다. -->
+            <input type="file" name="myFile" accept="image/png, image/jpeg">
+            <input type="submit">
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>여러 개의 파일 전송</legend>
+        <form action="./postFiles.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="myFiles[]" multiple="multiple">
+            <input type="image" src="./image/submit.png">
+        </form>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>오늘 배운 것 실습</title>
+    </head>
+    <body>
+        <form action="./practice1.php?aaa=100&bbb=200" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>카드 정보 입력</legend>
+                <ol>
+                    <li>
+                        <fieldset>
+                            <legend>카드 타입</legend>
+                            <ol>
+                                <li><label><input type="radio" name="card_type" value="VISA">VISA</label></li>
+                                <li><label><input type="radio" name="card_type" value="AmEx">AmEx</label></li>
+                                <li><label><input type="radio" name="card_type" value="Mastercard">Mastercard</label></li>
+                            </ol>
+                        </fieldset>
+                    </li>
+                    <li>
+                        카드번호
+                        <select name="select_card_no">
+                            <optgroup label="GROUP A">
+                                <option value="aaa">AAA</option>
+                                <option value="bbb">BBB</option>
+                                <option value="ccc">CCC</option>
+                            </optgroup>
+                        </select>
+                    </li>
+                    <li>
+                        CRC 번호
+                        <select name="select_crc_no">
+                            <option value="ddd">DDD</option>
+                            <option value="eee">EEE</option>
+                            <option value="fff">FFF</option>
+                        </select>
+                    </li>
+                    <li>
+                        카드 소유자 이름 
+                        <input type="text" name="owner_name" placeholder="카드 상의 이름">
+                    </li>
+                    <li>
+                        셀카 첨부
+                        <input type="file" name="myFiles[]" accept="image/*" multiple>
+                    </li>
+                </ol>
+            </fieldset>
+            <fieldset>
+                <input type="submit" value="구매">
+            </fieldset>
+        </form>
+    </body>
+</html>

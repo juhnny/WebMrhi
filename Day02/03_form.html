@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>03 Form</title>
+</head>
+<body>
+    <!-- form 요소는 anchor 요소처럼 다른 문서를 실행하지만 데이터를 전달할 수 있다. -->
+    <!-- GET Method -->
+    <form action="./getTest.php" method="get">
+        제목: <input type="text" name="title"><br>
+        메시지: <input type="text" name="msg"><br>
+        <input type="submit">
+    </form>
+    <hr>
+    <br>
+
+    <!-- POST Method -->
+    <form action="./postTest.php" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="id" placeholder="아이디">
+        <input type="password" name="pw" placeholder="비밀번호">
+        <!-- placeholder가 뷰로 치면 hint 같은 개념 -->
+
+        <p>
+            Sex : 
+            <label><input type="radio" name="sex" value="male">Male</label>
+            <label><input type="radio" name="sex" value="female">Female</label>
+        </p>
+        <p>
+            <label><input type="checkbox" name="fruits[]" value="apple">Apple</label>
+            <label><input type="checkbox" name="fruits[]" value="banana">Banana</label>
+            <label><input type="checkbox" name="fruits[]" value="orange">Orange</label>
+        </p>
+        <p>
+            message: 
+            <textarea name="msg" cols="30" rows="5"></textarea>
+        </p>
+        <div>
+            <select name="brand">
+                <optgroup label="국내 브랜드">
+                    <option value="현대">현대</option>
+                    <option value="기아">기아</option>
+                    <option value="대우">대우</option>
+                </optgroup>
+                <optgroup label="해외 브랜드">
+                    <option value="벤츠">벤츠</option>
+                    <option value="BMW">BMW</option>
+                    <option value="아우디">아우디</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <!-- 버튼 글씨를 바꾸려면 value 속성 사용 -->
+        <input type="submit" value="회원가입">
+        <input type="reset" value="취소">
+    </form>
+</body>
+</html>
+
+<!-- getTest.php까지 작성해서 제출을 시켜봐도 php 명령대로 동작하는 게 아니라 그냥 php 문서 내용이 텍스트 그대로 보인다. -->
+<!-- 지금 내 컴퓨터의 D:/WebMrhi/ 에서 html을 열고 php를 찾으라고 한 것인데 
+내 컴퓨터에는 php 해독기가 없기 때문에 php 문서를 열어도 언어대로 해석할 수가 없다.
+내 컴퓨터에 php를 다운받아 설치하면 해독 가능
+웹서버에는 php 해독기가 설치돼있어서 해독 가능한 것-->
+
+<!-- post 방식으로 요청 파라미터와 값이 잘 가는지 보려면 잠시 get 방식으로 바꿔놓고 확인하는 것도 방법 -->
