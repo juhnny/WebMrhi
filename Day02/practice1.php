@@ -1,5 +1,5 @@
 <?php
-    header('Content-Type:text/html; charset=utf=8');
+    header('Content-Type:text/html; charset=utf-8');
 
     //form 태그의 target에 GET 방식으로 꼽사리 끼운 데이터들
     $aaa = $_GET['aaa'];
