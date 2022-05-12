@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Font & Text Style</title>
+        <style>
+            p{font-family: FuturaBlack BT, sans-serif;}
+            p{font-family: monospace;}
+            /* 아래 있는 폰트가 적용됨 */
+            /* 위 방법은 디바이스 내에 글꼴이 있어야 사용 가능 */
+
+            /* 웹폰트 - 개발자가 지정한 별도의 글꼴 파일을 사용하기 */
+            /* 이름은 내가 지정하는 대로 */
+            @font-face {
+                font-family: MyCookieRun;
+                src: url("./fonts/Swagger.ttf");
+            }
+            p{font-family: 'MyCookieRun', sans-serif;}
+            p{font-size: 5px;}
+            p{font-size: 5pt;}
+            p{font-size: 5%;}
+            p{font-size: 5em;}
+            p{font-size: 5rem;}
+        </style>
+    </head>
+    <body>
+        <p>Hellow World</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni amet reprehenderit non nam provident hic, voluptas rem, officia quasi qui eveniet iusto delectus, exercitationem in dolorem sit! Eveniet, magni ad!</p>
+        <p>미안해 솔직하지 못한 내가 지금 이 순간이 꿈이라면 </p>
+    </body>
+</html>

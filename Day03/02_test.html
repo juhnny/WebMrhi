@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS 적용 방식</title>
+        <!-- 스타일을 적용하는 세가지 방법 -->
+        <!-- 1. 외부 스타일 시트 -->
+        <!-- 2. 내부 스타일 시트 -->
+        <!-- 3. 인라인 스타일 시트 -->
+        
+        <link rel="stylesheet" href="./02_test.css">
+        <!-- 예전에는 스타일시트 종류가 다양해 type="text/css"라고 정해줘야 했으나 이제 CSS로 천하통일되어 기본값이 됨 -->
+        
+        <style>
+            p{color: orange;}
+        </style>
+        <style>
+            /*  */
+            @font-face {
+                font-family: "Ubuntu";
+                src: url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+            }
+            /* 폰트는 가장 선호하는 걸 먼저 쓰고 마지막에는 가장 일반적인 폰트(서체)를 지정 */
+            /* 기본 서체는 모든 디바이스(컴퓨터, 폰 등)에 탑재돼있음 */
+            body{font-family: 'Ubuntu', 'Times New Roman', Times, serif;}
+            /* 폰트 사이즈는 em(부모 기준 n배),또는 rem(최상위(body) 기준 n배) 사용 권장 */
+            p{font-size: 2rem;}
+            /* font-style, font-weight, font-size, font-family 순으로 써야한다. */
+            /* font-style과 font-weight은 뒤바뀌어도 상관 없다. */
+            p{word-wrap: normal;}
+        </style>
+    </head>
+    <body>
+        <!-- 인라인 스타일은 모든 적용방식 중 최후의 적용값이 됨 -->
+        <p style="color: blue;">Hello World</p>
+        <p style="color: #0000FF;">Hello World</p>
+        <p style="color: #0000FF88;">Hello World</p>
+        <p style="color: rgb(00, 00, 255);">Hello World</p>
+        <p style="color: rgba(00, 00, 255, 0.5);">Hello World</p>
+        <p style="color: rgb(0%, 0%, 100%);">Hello World</p>
+        <p style="color: rgba(0%, 0%, 100%, 50%);">Hello World</p>
+        
+        <!-- 외부/내부 스타일시트도 어디에나 쓸 수 있다. -->
+        <style>
+            p{color: yellow;}
+        </style>
+
+        <!-- 외부/내부 스타일시트 중에서는 가장 마지막에 있는 애가 적용된다. 단, 물론, 같은 레벨에 대해서-->
+        <link rel="stylesheet" href="./02_test_2.css">
+
+    </body>
+</html>

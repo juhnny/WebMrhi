@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Selector</title>
+    <!-- 내부 스타일시트는 문서 내 어디에 쓰던지 적용되지만 head 영역을 권장한다. -->
+    <style>
+    /* 이 <style> 영역 안에서는 CSS의 문법체계를 따름 */
+    /* 선택자selector{속성property:값value;} */
+    /* 0. 전체 선택자 */
+        *{font-family: Arial, Helvetica, sans-serif;
+        color: darkmagenta;}
+
+    /* 1. 타입(요소) 선택자 */
+        h2{ color : yellowgreen; }
+        p{color : blue; }
+
+    /* 2. 클래스 선택자 */
+       .abc{color: lightskyblue;}
+       /* p 중 클래스가 abc인 것들. 붙여 써야 한다. */
+       p.abc{background-color: lightgoldenrodyellow;}
+
+    /* 3. ID 선택자 */
+        #p1{color: salmon;}
+
+    /* 4. 선택자 그룹 */
+        li, a{color: olive;}
+
+    /* 5. 자식, 자손 선택자 */
+        /* 자손은 DOM tree에서 그 하위에 있는 모든 객체 */
+        /* 자식은 바로 아래 자손들 */
+        /* 자손과 자식 간에는 우선순위가 없다. 나중에 쓴 게 적용됨 */
+        #d1 p{color: crimson;}
+        #d1>p{color: orange;}
+
+        /* 띄어쓰기 주의. 아래 두 선택자는 전혀 다른 선택자 */
+        /* 첫번째는 p 요소 중 클래스가 abc인 것들 */
+        /* 두번째는 p 요소의 자손 중 클래스가 abc인 것들 */
+        p.abc{color: lawngreen;} 
+        p .abc{color: aqua;}
+
+        /* 복잡한 형태의 선택자 */
+        #d2 ul.uuu>li{background-color: burlywood;}
+
+    /* 6. 속성 선택자 */
+        /* 참고로 font에 관련된 속성들은 그 이하 태그들에도 적용 */
+        p[class]{font-weight: bold;}
+        div[id="d2"]{font-style: italic;}
+
+    /* 7. 의사pseudo 선택자 */
+        a:link{color: blue;}
+        a:visited{color: brown;}
+        a:hover{color: green;}
+        a:active{color: greenyellow;}
+
+        table tr:first-child{background-color: hotpink;}
+        table tr:last-child{color:lightcoral;}
+        table tr:nth-child(2){color: lightyellow;}
+        table tr:nth-child(3){color: lightgreen;}
+        /* n번째라고 하면 1,2,3,4,... */
+        table tr:nth-child(n){background-color: whitesmoke;}
+        table tr:nth-child(2n+1){background-color: silver;}
+
+        /* 첫째라고 부르면 모든 첫째 자식들은 다 선택됨 */
+        #d2 ul li:first-child{background-color: violet;}
+
+    </style>
+</head>
+<body>
+    <h2 class="abc">CSS Selector</h2>
+    <p id="p1">Nice to meet you</p>
+    <p class="abc">Hello</p>
+
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+    </ul>
+
+    <a href="">Naver</a>
+    
+    <div id="d1">
+        <h4>Region</h4>
+        <p>Hello world</p>
+        <div>
+            <p>Apple</p>
+            <p>Banana</p>
+            <p>Orange</p>
+        </div>
+    </div>
+
+    <div id="d2">
+        <ul class="uuu">
+            <li>MMM</li>
+            <li>MMM</li>
+            <li>MMM</li>
+        </ul>
+        <ul>
+            <li>MMM</li>
+            <li>MMM</li>
+            <li>MMM</li>
+        </ul>
+    </div>
+
+    <a href="https://www.google.com">Google</a>
+
+    <table border="1">
+        <tr>
+            <td>AAA</td>
+            <td>BBB</td>
+            <td>CCC</td>
+            <td>DDD</td>
+        </tr>
+        <tr>
+            <td>AAA</td>
+            <td>BBB</td>
+            <td>CCC</td>
+            <td>DDD</td>
+        </tr>
+        <tr>
+            <td>AAA</td>
+            <td>BBB</td>
+            <td>CCC</td>
+            <td>DDD</td>
+        </tr>
+        <tr>
+            <td>AAA</td>
+            <td>BBB</td>
+            <td>CCC</td>
+            <td>DDD</td>
+        </tr>
+    </table>
+</body>
+</html>
