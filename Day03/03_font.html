@@ -12,20 +12,67 @@
             /* 웹폰트 - 개발자가 지정한 별도의 글꼴 파일을 사용하기 */
             /* 이름은 내가 지정하는 대로 */
             @font-face {
-                font-family: MyCookieRun;
+                font-family: Swagger;
                 src: url("./fonts/Swagger.ttf");
             }
-            p{font-family: 'MyCookieRun', sans-serif;}
+            p{font-family: 'Swagger', sans-serif;}
             p{font-size: 5px;}
             p{font-size: 5pt;}
             p{font-size: 5%;}
             p{font-size: 5em;}
             p{font-size: 5rem;}
+
+            /* 두께는 숫자로 조절할수도 있는데 되는 경우도 있고 안되는 경우도 있어서 잘 안쓰고 */
+            /* 주로 normal, bold 등 키워드로 지정한다고 */
+            /* p{font-weight: bold;} */
+
+            /* p{font-style: italic;} */
+
+            /* 한 번에 weight style size family를 지정 가능 */
+            p{font: italic bold 2.5rem "Swagger", sans-serif;}
+
+            /* 정렬 */
+            p{text-align: center;}   
+            p{text-align: justify;}
+
+            /* 대소문자 변환 */
+            p{text-transform: uppercase;}
+            /* p{text-transform: lowercase;} */
+            /* p{text-transform: capitalize;} */
+            /* p{text-transform: initial;} */
+
+            /* 줄 장식 */
+            p{text-decoration: overline;}
+            p{text-decoration: underline;}
+            p{text-decoration: line-through;}
+            p{text-decoration: none;}
+
+            /* 그림자 */
+            p{text-shadow: 5px 10px 10px blue;}
+
+            /* 워드랩 */
+            /* 단어 잘림 방지 */
+            p#aa{
+                width: 5em;
+                border: 1px solid blue ;
+                word-wrap: break-word;
+            }
+
+            /* 다중 컬럼(쪽 나눔) */
+            p#col {
+                column-count: 2;
+                column-gap: 80px;
+                column-rule: 4px dashed green;
+            }
+
         </style>
     </head>
     <body>
         <p>Hellow World</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni amet reprehenderit non nam provident hic, voluptas rem, officia quasi qui eveniet iusto delectus, exercitationem in dolorem sit! Eveniet, magni ad!</p>
         <p>미안해 솔직하지 못한 내가 지금 이 순간이 꿈이라면 </p>
+        <p>abcde fghi jklm</p>
+        <p id="aa">미안해 솔직하지 못한 내가 지금 이 순간이 꿈이라면 aaaaaaaaaaaaaaaaaaaa</p>
+        <p id="col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi error eaque dolorum? Officia necessitatibus, accusamus tempore aspernatur consequatur sint impedit eos esse optio reiciendis voluptates rerum voluptate? Necessitatibus, doloremque culpa! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, debitis deleniti. Doloribus commodi nostrum similique at aperiam amet. Ut amet a maiores architecto at repellendus rem pariatur quidem magni ad. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro fugiat odio ipsa tempore nisi tempora? Officia culpa quibusdam laborum, corrupti quos dolore porro voluptatum at eligendi. Quisquam a reprehenderit placeat.</p>
     </body>
 </html>
