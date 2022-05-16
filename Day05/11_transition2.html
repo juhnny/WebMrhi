@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition(전환) 2</title>
+    <style>
+        #d1 img{
+            background-color: brown;
+            width: 200px;
+            height: 100px;
+
+            /* 병형될 속성들과 시간을 나열 */
+            transition: width 1s, height 1s, transform 1s, background-color 1s;
+        }
+        /* 변형될 값들 */
+        #d1 img:hover{
+            width: 300px;
+            height: 150px;
+            transform: rotate(30deg);
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>transition(전환) CSS 속성</h1>
+    <div id="d1">
+        <img src="./image/lion.png" alt="lion">
+        <img src="./image/pome.png" alt="pome">
+    </div>
+    
+</body>
+</html>
