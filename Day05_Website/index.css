@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+header{
+    padding: 5px 5px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: underline;
+}
+nav{
+    margin: 10px 0;
+    padding: 10px 0;
+}
+nav ul{
+    list-style: none;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    text-align: center;
+}
+nav ul li{
+    display: inline;
+    letter-spacing: 0.2rem;
+    margin-left: 2rem;
+}
+nav ul li a{
+    text-transform: uppercase;
+    line-height: 3rem;
+}
+
+#category{
+    float: left;
+    width: 10rem;
+    margin-right: 1rem;
+}
+#category ul{
+    list-style: none;
+}
+#category ul li{
+    background-color: antiquewhite;
+    border-bottom: 1px solid gray;
+}
+#category ul li a{
+    display: block;
+    padding: 5px 10px;
+}
+
+/* 본문 영역을 aside의 높이로 띄우기. aside 옆에 놓여지게 */
+section#main{
+    float: left;
+    width: 800px;
+    min-width: 600px;
+}
+#cartandlogin{
+    float: right;
+    width: 12rem;
+    padding: 10px;
+}
+#login input{
+    margin-bottom: 5px;
+}
+#cart{
+    margin-bottom: 20px;
+}
+
+#footer{
+    clear: both;
+    text-align: center;
+    padding: 1rem 0px;
+}

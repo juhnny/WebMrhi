@@ -8,6 +8,7 @@
                 border: 2px solid;
                 border-collapse: collapse;
                 text-align: center;
+                border: 5px solid lightblue;
             }
             th, td{
                 border: 1px solid;
@@ -21,10 +22,6 @@
             /* 이 중 tbody의 자식들이 tr들... */
             /* table에서 tr을 찾을 때 table>tr 이라고 찾으면 찾을 수 없다. */
             table>tr{border: 5px solid red} /* 아무것도 안나옴 */
-            /* 아래가 tbody */
-            table:first-child{ 
-                border: 5px solid lightblue;
-            }
         </style>
     </head>
     <body>
