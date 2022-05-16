@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layout2 semantic</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0px;
+        }
+        header{
+            background-color: coral;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav{
+            display: table-cell;
+            background-color: darkseagreen;
+        }
+        section{
+            display: table-cell;
+            background-color: gold;
+            padding: 0 20px;
+            width: 100%;
+        }
+        footer{
+            background-color: aliceblue;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- 시맨틱 태그 사용 -->
+        <!-- 시맨틱 태그를 썼다고 div와 달라지는 건 아무것도 없다. -->
+        <!-- 다만 그 영역의 용도를 알기 조금 편하고 검색엔진에서 시맨틱 태그를 우선적으로 찾는다는 것. -->
+        <header><h1>My Blog</h1></header>
+        <nav>
+            <ul>
+                <li><a href="#">aaa</a></li>
+                <li><a href="#">aaa</a></li>
+                <li><a href="#">aaa</a></li>
+            </ul>
+            <figure>
+                <img src="./image/pome.png" alt="pome" width="150px">
+                <figcaption>pome</figcaption>
+            </figure>
+        </nav>
+        <section>
+            <article>
+                <h3>안드로이드 네이티브 앱</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ducimus aperiam voluptatem? Error velit magni cupiditate sapiente accusantium quidem necessitatibus voluptas ducimus quod, quas neque, non a itaque natus nisi.</p>
+            </article>
+            <article>
+                <h3>웹 앱</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ducimus aperiam voluptatem? Error velit magni cupiditate sapiente accusantium quidem necessitatibus voluptas ducimus quod, quas neque, non a itaque natus nisi.</p>
+            </article>
+            <article>
+                <h3>하이브리드 앱</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur ducimus aperiam voluptatem? Error velit magni cupiditate sapiente accusantium quidem necessitatibus voluptas ducimus quod, quas neque, non a itaque natus nisi.</p>
+            </article>
+        </section>
+        <footer>Copiright &copy; juhnny 2022</footer>
+    </div>
+</body>
+</html>

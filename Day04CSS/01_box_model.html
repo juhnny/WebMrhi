@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>01 Box model</title>
+    <style>
+        p.border{
+            /* border-style만 적용해도 경계선이 그려짐 */
+            border-style: solid;
+            border-top-style: dashed;
+            border-bottom-style: dotted;
+            border-width: 1px;
+            border-bottom-width: 5px;
+            border-color: red;
+            border-left-color: blue;
+            border-radius: 20px;
+            border-top-left-radius: 0;
+            border: 30px solid transparent;
+            border-image-source: url('./border.png');
+            border-image-slice: 30 30; /* 높이, 너비*/
+            border-image-repeat: round;
+
+            /* 요소 크기 - 블럭 요소만 가능 */
+            width: 70%;
+            height: 300px;
+
+            /* margin-left: auto; */
+            /* margin-right: auto; */
+            /* 줄이면 */
+            margin: 0 auto;
+        }
+
+        /* 인라인 요소들은 width, height 속성이 없음. */
+        a, em{border: 1px solid blue;
+        width: 100px;
+        height: 200px;}
+        /* 단, img, input 같은 inline-block 요소들은 가능 */
+        img{
+            border: 1px solid brown;
+            width: 400px;
+            height: 200px;
+        }
+        input{
+            border: 1px solid green;
+            background-color: antiquewhite;
+            width: 100%;
+        }
+
+        /* margin은 서로 겹쳐진다. */
+        #p1{
+            border: 1px solid orange;
+            margin-bottom: 50px;
+        }
+        #p2{
+            border: 1px solid yellowgreen;
+            margin-top: 30px;
+        }
+        /* 마이너스 마진을 주면 서로 겹쳐짐*/
+        #p3{
+            border: 1px solid blue;
+            margin-top: -30px;
+        }
+
+        p[id="bg"]{
+            background-color: aquamarine;
+            background-image: url("./image.png");
+            background-size: 200px 100px;
+
+            background-repeat: repeat; /* default */
+            background-repeat: repeat-x; /* 좌우로만 반복 */
+            background-repeat: repeat-y; /* 상하 반복 */
+            background-repeat: no-repeat;
+
+            background-position: center;
+            background-position: top right;
+
+            /* 축약형 */
+            background: greenyellow url(./image.png) no-repeat center,top,right;
+        }
+
+        /* 배경이미지의 붙어있는 위치 설정 */
+        #attach{
+            width: 60%;
+            height: 300px;
+            border: 1px solid blue;
+
+            /* 콘텐츠가 박스보다 많아서 흘러넘칠 경우의 처리 */
+            overflow: scroll;
+            margin: 0 auto;
+            background: transparent url('./image.png') no-repeat center;
+            background-attachment: scroll; /* 기본값 */
+            background-attachment: local; /* 콘텐츠를 기준으로 위치 */
+            background-attachment: fixed; /* 브라우저를 기준으로 위치 */
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <!-- Block 요소 -->
+        <p class="border">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto minus dolores officiis repellat excepturi veniam nam, porro dolore doloribus eius beatae eum error quasi. Nemo provident sed eius facere! Magnam. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur perferendis officia veritatis dolores eaque harum nam repellat! Animi exercitationem magnam placeat eius vero ipsam tenetur voluptatem voluptate suscipit? Magnam, numquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, laborum temporibus? Ratione alias molestiae, enim voluptate quia saepe in deleniti mollitia quo quod doloribus quasi maiores molestias placeat delectus sapiente.
+        </p>
+        
+        <!-- Inline 요소들 -->
+        <a href="">Naver</a>
+        <em>Hello World</em>
+
+        <!-- Inline-block 요소들 -->
+        <img src="./back.jpg" alt="back image">
+        <input type="text" name="aaa">
+
+        <div>
+            <p id="p1">p1</p>
+            <p id="p2">p2</p>
+            <p id="p3">p3</p>
+        </div>
+
+        <p id="bg">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet corporis est molestiae eos deserunt veniam aliquid accusantium ullam eum iure dolorum atque laudantium consequatur, tempore, nobis, veritatis tenetur odit sunt!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium ad doloribus eum sed asperiores architecto recusandae dolorum facilis repellendus. Numquam cumque nihil dolorem sit aliquid ex laborum enim, dolores ut.
+        </p>
+
+        <p id="attach">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, hic? Aut mollitia facilis sapiente perspiciatis et, asperiores rem exercitationem possimus adipisci quidem eveniet unde? Et iure at nisi sint ullam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo soluta velit accusamus modi cumque, quos non ipsam vero quaerat nihil quasi animi. Placeat ipsum beatae natus perferendis non, quos ex!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, impedit harum magnam illum officia pariatur, saepe laudantium consequuntur ex obcaecati voluptas dolores, unde ullam? Itaque aut dolorem ipsam nam vero!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae cupiditate quas doloribus placeat nisi dolores nostrum, eos porro, maxime deserunt facere earum, atque ratione eaque obcaecati repellendus alias expedita omnis?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam laudantium porro placeat perspiciatis iusto! Nisi, nulla repellendus voluptatibus qui consequuntur modi, tenetur quam voluptas autem nam neque! Nisi, fugit ullam!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, eum dolor itaque commodi obcaecati omnis nobis nesciunt nihil sit, natus earum modi at repellendus ratione consequatur, voluptate exercitationem vel ad.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos pariatur eaque, aliquid vero sint animi laborum mollitia dolore alias, illum odio quis nisi veniam. Soluta, maiores illo! Molestiae, architecto amet?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt esse aperiam vitae ullam quibusdam eius, ratione perspiciatis, similique laboriosam dolor dolorem inventore totam magni? Optio, dolor doloremque! Sapiente, quam id.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam in neque dolores inventore corporis nam repudiandae suscipit praesentium deserunt? Consequuntur quidem ea vero impedit deleniti porro iusto tenetur molestias dicta.
+        </p>
+    </div>
+</body>
+</html>

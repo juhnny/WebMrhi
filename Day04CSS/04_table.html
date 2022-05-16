@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Table style</title>
+        <style>
+            table{
+                border: 2px solid;
+                border-collapse: collapse;
+                text-align: center;
+            }
+            th, td{
+                border: 1px solid;
+            }
+            th{background-color: tomato; color: white;}
+            tr:nth-child(2n+1){background-color: gainsboro;} /* 첫번째 줄도 해당되지만 th의 우선순위가 더 높음 */
+            tr>:first-child{
+                width: 10rem;
+                border-right: 3px solid black;}
+            /* table에겐 (theader), tbody, (tfooter)라는 자식들이 있고 */
+            /* 이 중 tbody의 자식들이 tr들... */
+            /* table에서 tr을 찾을 때 table>tr 이라고 찾으면 찾을 수 없다. */
+            table>tr{border: 5px solid red} /* 아무것도 안나옴 */
+            /* 아래가 tbody */
+            table:first-child{ 
+                border: 5px solid lightblue;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>김철수</td>
+                <td>aa@aa.com</td>
+            </tr>
+            <tr>
+                <td>박철수</td>
+                <td>bb@aa.com</td>
+            </tr>
+            <tr>
+                <td>최철수</td>
+                <td>cc@aa.com</td>
+            </tr>
+            <tr>
+                <td>제갈철수</td>
+                <td>dd@aa.com</td>
+            </tr>
+        </table>
+    </body>
+</html>

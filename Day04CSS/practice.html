@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>챕터5 연습문제들</title>
+    <style>
+        #no6{
+            background-color: green;
+            padding: 10px;
+            position: relative;
+
+        }
+        #no6 > div {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50%;
+            background-color: yellow;
+            border: dotted red;
+            padding: 10px;
+        }
+
+        #no7{
+            font-size: 2rem;
+        }
+        #no7>ol{color: red;}
+        #no7 p{color: blue; border-left: 1px solid black; padding-left: 10px;}
+
+        #table1{background-color: yellow;}
+        /* tbody를 선택하고 싶은데 이렇게 하면 첫번째 td들이 선택된다...왜지 */
+        #table1 :first-child{border: solid blueviolet}
+        #table1 *{
+            border: solid black;
+        }
+        #table1 tr:first-child{background-color: red;}
+
+        #table1 tr:first-child td:nth-child(2){rowspan:2;} 
+    </style>
+</head>
+<body>
+
+    <div id="no6">
+        <img src="./image.png" alt="image">
+        <div>
+            <div>
+                <h1>CSS</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos unde, quae reiciendis provident rerum commodi adipisci obcaecati placeat in dolore accusantium doloremque quibusdam totam odit expedita ipsa quod deleniti odio!</p>    
+            </div>
+        </div>
+    </div>
+    
+    <div id="no7">
+        <ol>
+            <li><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p></li>
+            <li><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p></li>
+            <li><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p></li>
+        </ol>
+    </div>
+
+    <div id="no8">
+        <table id="table1">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

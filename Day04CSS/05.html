@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title></title>
+        <style>
+            #aa{display: inline;}
+            /* inline 요소는 사이즈 조절 불가 */
+            #aa{display: inline; width: 300px;}
+            /* 사이즈조절을 하고 싶다면 inline-block으로 */
+            #aa{display: inline-block; width: 300px;}
+
+            .bb{display: block;}
+            /* list를 inline으로 하면 불릿기호가 사라짐 */
+            li{display: inline;}
+            /* #cc{display: none;} */
+        </style>
+    </head>
+    <body>
+        <p id="aa">Hellow World</p>
+        <a href="#">Good day</a>
+        <strong>Good afternoon</strong>
+        <img class="bb" src="./image.png" alt="a tree image">
+
+        <ul>
+            <li id="aa">AAA</li>
+            <li id="bb">AAA</li>
+            <li id="cc">AAA</li>
+        </ul>
+        <hr>
+
+        <!-- 블럭요소와 인라인 요소를 중첩으로 쓸 때 조심할 점 -->
+        <!-- 블럭 요소 안에 다른 블럭 요소를 넣는 것은 자연스러움 -->
+        <div style="background-color: yellow;">
+            Nice <p style="border: solid">blue</p> World
+        </div>
+        <hr>
+        
+        <!-- 인라인 요소 안에 블럭 요소를 넣으면? -->
+        <!-- 인라인 요소는 중간이 잘리고 블럭 요소는 너비를 다 차지하지 못한다. -->
+        <!-- 인라인 안에 블럭 요소를 넣는 건 지양하자! -->
+        <span style="background-color: orange;">
+            Nice <p style="border: solid">blue</p> World
+        </span>
+        <hr>
+
+        <!-- 태그에 따라서 같은 태그를 중첩으로 쓰면 문제가 생기기도 함 -->
+        <!-- 권장되진 않지만 엔드태그가 없어도 태그로 인식하기 때문에 -->
+        <!-- 아래처럼 쓰면 <p>부터 <p> 전까지 하나의 태그, <p>부터 </p>까지 하나의 태그로 인식. 마지막 </p>는 잘못된 태그로 인식해서 무시 -->
+        <p style="background-color: lightgreen;">aaa<p>bbb</p>ccc</p>
+        <h1>aaa<h1>bbb</h1>ccc</h1> 
+        <br>
+        <!-- div 태그 같은 경우는 스타트 태그와 엔드 태그의 짝을 찾게 돼있어서 문제 없음 -->
+        <!-- strong 같은 경우는 전부 태그로 인식이 되네.. -->
+        <strong>aaa<strong>bbb</strong>ccc</strong>
+
+    </body>
+</htorange

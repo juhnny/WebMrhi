@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float style</title>
+    <style>
+        img.a {
+            float: left;
+        }
+        /* float되고 남은 영역으로 내용이 계속 빨려들어가는 게 싫다면 */
+        .clear{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <img class="a" src="./image/sunshine.jpg" alt="sunshine image" width="160" height="120">
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat ab voluptate, cum ipsa dignissimos vel eligendi iusto. 
+        Nihil amet rem assumenda suscipit aperiam soluta animi explicabo ad. Eos, recusandae ab! Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+        Maxime, mollitia nihil quae voluptates nemo ab hic iure quo! Delectus reprehenderit quasi et neque doloribus asperiores inventore voluptatibus ipsum vel! 
+        Cumque?
+    </p>
+    <h2 class="clear">새로운 기사</h2>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio omnis nesciunt error, corrupti neque minus recusandae doloremque est totam quibusdam facere natus minima illum ut officia quidem asperiores aspernatur perspiciatis?
+    </p>
+
+    <!-- float 요소를 감싸는 container는 쪼그라든다. 내용물이 없어진 셈. -->
+    <div style="border: 1px solid red;">
+        <img src="./image/pome.png" alt="pome" width="150" style="float: left;">
+    </div>
+
+</body>
+</html>

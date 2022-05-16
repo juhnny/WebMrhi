@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>overflow</title>
+    <style>
+        p{
+            background-color: lightgreen;
+            width: 200px;
+            height: 50px;
+        }
+        /* 내용물이 흘러넘칠 때 overflow 속성으로 어떻게 처리할 지 결정 */
+        /* auto는 스크롤이 필요할 때 스크롤바가 생겨남 */
+        /* scoll은 스크롤이 필요하던 안하던 스크롤바 영역이 나타남 */
+        /* hidden은 숨기기 */
+        #target{
+            border: 1px solid green;
+            width: 300px;
+            height: 100px;
+
+            overflow: auto;
+            overflow: scroll;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="target">
+        <p>block #1</p>
+        <p>block #2</p>
+        <p>block #3</p>
+        <p>block #4</p>
+        <p>block #5</p>
+    </div>
+</body>
+</html>

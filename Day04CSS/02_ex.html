@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>anchor, list style</title>
+    </head>
+    <style>
+        #aa:link{color: red;}
+        #aa:hover{
+            color: aqua;
+            font-size: 2rem;
+        }
+        #aa:active{color: violet;}
+        #aa:visited{color: chartreuse;}
+        p:hover{background-color: goldenrod;}
+        img:hover{background-color: grey;}
+
+        #u1{list-style-type: disc;}
+        #u2{list-style-type: circle;}
+        #u3{list-style-type: square;}
+
+        #u4{list-style-type: square; list-style-position: inside;}
+        #u5{list-style-image: url("./border.png"); list-style-position: inside;}
+
+        #o1{list-style: lower-alpha;}
+        #o2{list-style: lower-greek;}
+        #o3{list-style: lower-roman;}
+        #o4{list-style: lower-latin;}
+        #o5{list-style: decimal-leading-zero;}
+
+        #o6{list-style: none;}
+
+        /* list-style 속성은, 항목 모양의 종류, 위치, 항목에 넣을 이미지를 한꺼번에 지정할 수 있어요. */
+        /* list-style: list-style-type(항목 모양 종류) list-style-position(위치)  list-style-image(이미지) */
+        /* 예: list-style: disc outside none; */
+        /* 예: list-style: square url("bcat.png"); */
+    </style>
+    <body>
+        <a href="#" id="aa">aa</a>
+        <p>Nice to meet you</p>
+        <img src="./image.png" alt="image">
+        <hr>
+
+        <ul>
+            <li id="u1">HTML5</li>
+            <li id="u2">CSS3</li>
+            <li id="u3">JS</li>
+            <li id="u4">AAA</li>
+            <li id="u5">BBB</li>
+
+        </ul>
+        <ol>
+            <li id="o1">BBB</li>
+            <li id="o2">BBB</li>
+            <li id="o3">BBB</li>
+            <li id="o4">BBB</li>
+            <li id="o5">BBB</li>
+            <li id="o6">BBB</li>
+        </ol>
+    </body>
+</html>

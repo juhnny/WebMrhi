@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Position style</title>
+    <style>
+        #aaa{background-color: grey;}
+        #p1{
+            width: 200px;
+            height: 50px;
+            background-color: salmon;
+        }
+        #p2{
+            width: 200px;
+            height: 50px;
+            background-color: yellow;
+        }
+        #p3{
+            width: 200px;
+            height: 50px;
+            background-color: yellowgreen;
+        }
+
+        #p2{
+            position: static; /* 기본값. 자연스럽게 순서대로 배치 */
+            /* static에서는 위치 설정값이 무시됨 */
+
+            position: relative; /* 내가 원래(static에서) 놓여질 위치로부터 상대적으로 이동됨 */
+            
+            position: absolute; /* 콘테이너(문서)를 기준으로 이동 */
+            /* 기준을 문서가 아니라 부모요소로 할 수도 있다. */
+            /* 부모 요소의 position이 static만 아니면 된다. */
+            /* 주로 부모를 relative로 놓는다. */
+            /* 요소들을 겹치게 할 때 주로 사용 */
+
+            position: fixed;
+            /* 화면을 기준으로 이동 */
+            /* 스크롤을 해도 그대로 따라다님 */
+
+            /* 위치 설정 속성(top, bottom, left, right) */
+            /* 원점이 있는 것이 아니라 가장자리로부터의 offset(얼마나 떨어지는가) */
+            top: 200px; 
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Postion 속성 연습</h2>
+    <div id="aaa">
+        <p id="p1">block1</p>
+        <p id="p2">block2</p>
+        <p id="p3">block3</p>
+    </div>
+    <div style="height: 2000px;"></div>
+</body>
+</html>
