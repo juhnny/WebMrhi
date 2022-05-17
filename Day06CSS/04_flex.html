@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox Layout</title>
+    <style>
+        #container{border:3px solid black}
+        #container div{
+            background-color: tomato;
+            border: 1px solid red;
+            width: 100px;
+            padding: 50px;
+            margin: 10px;
+        }
+        /* 부모에게 flex layout적용 */
+        #container{
+            display: flex;
+            /* row(가로방향. 기본값) 모드일 때 기준으로 자식의 너비는 wrap이 되고 높이는 가능한 한 최대 사이즈가 된다. */
+
+            /* 부모 너비보다 배치할 요소가 더 많다면? 
+            부모 크기를 넘어서는 때부터 너비를 임의로 줄여버림 */
+            /* 오버플로우가 발생했을 때 계속 배치할지 밑으로 내릴지 여부를 설정할 수 있음 */
+            flex-wrap: nowrap; /* default */
+            flex-wrap: wrap-reverse; /* 아래부터 위로 쌓기 */
+            flex-wrap: wrap;
+
+            /* 2) 자식 배치 방향 */
+            flex-direction: row;
+            height: 600px;
+            flex-direction: row-reverse;
+            flex-direction: column;
+            flex-direction: column-reverse;
+
+            /* 3) direction, wrap 속성을 축약형으로 쓰는 법 */
+            /* 순서는 상관없음 */
+            flex-flow: row nowrap; /* 기본값 */
+            flex-flow: wrap column;
+
+            /* 4) justify-content : 배치방향과 같은 축의 정렬 */
+            flex-direction: row;
+            justify-content: flex-start;
+            justify-content: flex-end;
+            justify-content: center;
+            justify-content: space-between;
+            justify-content: space-around;
+            justify-content: space-evenly;
+
+            /* 5) align-items : 배치방향과 교차되는 축의 정렬 */
+            /* 그냥 두면 stretch가 기본값이라 수직축을 가득 채우려고 하지만 값을 바꿔줄 수 있다.*/
+            align-items: stretch; /* 기본값. 요소의 너비가 정해져 있으면 stretch 적용 안됨 */
+            align-items: flex-start;
+            align-items: flex-end;
+            align-items: center;
+            align-items: baseline; /* 박스가 아니라 글씨의 기준선을 기준으로 정렬 */
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Flexbox 방식에서는 자식요소들의 배치 방법을 부모요소에서 결정 -->
+    <div id="container">
+        <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <!-- <div>A</div>
+        <div>B</div>
+        <div>C</div>
+        <div>A</div>
+        <div>B</div>
+        <div>C</div> -->
+    </div>
+
+    <br><br>
+    <!-- 세로축 가운데 정렬을 할 때 flex layout이 유용 -->
+    <div id="header">
+        <h2>제목</h2>
+        <p>thislfjl asdlfi welfkasdf </p>
+    </div>
+
+    <style>
+        #header{
+            height: 200px;
+            background-color: seagreen;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <br><br>
+
+    <div id="container2">
+        <div id="d1">aaa</div>
+        <div id="d2">bbb</div>
+        <div id="d3">ccc</div>
+        <div id="d4">ddd</div>
+    </div>
+
+    <style>
+        #container2{
+            display: flex;
+        }
+        #container2 div{
+            background-color: cornflowerblue;
+            margin: 10px;
+            padding: 20px;
+
+        }
+        /* flex 속성 중 자식요소에게 설정하는 속성들 */
+        /* 1) order - 배치 순서를 변경할 수 있음 */
+        /* 이 때의 값은 우선순위. 기본값은 0 */
+        /* 값을 1만 주어도 맨 뒤로 밀려남 */
+        /* #d1{order: 1;} */
+        /* #d2{order: -1;} */
+
+        /* 2) flex-grow : 너비를 정해준 값의 비중만큼 배정 */
+        /* 기본 비중은 0 */
+        /* Android LinearLayout의 weight과 같음 */
+        #d1{flex-grow: 1;}
+        #d2{flex-grow: 1;}
+
+        /* 3) flex-shrink : 나머지 flex 아이템과 비교해 얼마나 너비를 줄일지를 설정 */
+        /* 05_flex_shrink.html에서 실습 */
+
+        /* 4) flex-basis  */
+        /* 요소의 초기 길이를 지정함. */
+        /* width와의 차이점은 basis로 지정한 너비는 공간이 부족할 때 그 요소부터 줄인다는 것. */
+        #d3{flex-basis: 200px;}
+        /* 뭔가...basis만 쓰면 알겠는데 grow랑 같이 쓰면 헷갈리네.. */
+
+        /* 5) flex 축약형 */
+        #d4{
+            /* One value, length or percentage: flex-basis */
+            flex: 10em;
+            flex: 30%;
+            /* Two values: flex-grow | flex-basis */
+            flex: 1 30px;
+            /* Two values: flex-grow | flex-shrink */
+            flex: 2 2;
+            /* Three values: flex-grow | flex-shrink | flex-basis */
+            flex: 1 2 10%;
+        }
+
+        /* 6) 자식요소만의 정렬 */
+        #container2{height: 600px;}
+        #d1{align-self: center;}
+        #d2{align-self: flex-end;}
+
+        #d3{justify-self: flex-end;}
+    </style>
+    
+</body>
+</html>

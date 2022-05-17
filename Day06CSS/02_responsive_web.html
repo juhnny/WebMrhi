@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>반응형 웹 페이지 예제</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        #wrap{
+            width: 90%;
+            border: 1px solid gray;
+            margin: 0 auto;
+        }
+        #wrap div{
+            /* 가로로 배치하면서도 size 조절이 가능하게 inline-block 사용 */
+            display: inline-block;
+            width: 100%;
+            height: 100px;
+            /* inline-block은 기본 margin이 존재 */
+            margin-right: -6px;
+        }
+        #wrap div:first-child{
+            background-color: purple;
+        }
+        #wrap div:nth-child(2){
+            background-color: blue;
+        }
+        #wrap div:nth-child(3){
+            background-color: green;
+        }
+        #wrap div:nth-child(4){
+            background-color: orange;
+        }
+        #wrap div:last-child{
+            background-color: red;
+        }
+
+        /* media query 적용 */
+        /* screen은 출력물이 아닌 기기의 화면으로 볼 때를 말함. 안 써줘주면 all */
+        @media screen and (min-width:600px){
+            #wrap div{width: 50%;}
+            #wrap div:last-child{width: 100%;}
+        }
+        @media all and (min-width:800px) {
+            #wrap div{width: 20%;}
+            /* 모든 div를 선택했어도 last-child를 지정해서 써주지 않으면 적용되지 않음. 더 작은 단위이기 때문에.. */
+            #wrap div:last-child{width: 20%;}
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div>aa</div>
+        <div>bb</div>
+        <div>cc</div>
+        <div>dd</div>
+        <div>ee</div>
+    </div>
+    
+</body>
+</html>

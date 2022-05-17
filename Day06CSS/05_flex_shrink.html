@@ -1,0 +1,32 @@
+<html>
+    <body>
+        <style>
+            #container{
+                display: flex;
+            }
+            #container div{
+                background-color: royalblue;
+                width: 100px;
+                margin: 5px;
+                text-align: center;
+                line-height: 50px;
+            }
+            /* 브라우저 좌우 너비를 줄여보면 컨텐츠가 온전한 한 너비를 자동으로 줄인다. */
+            /* 이 때 줄어드는 정도를 조절하는 방법이 flex-shrink */
+            /* 기본값은 1, 0으로 두면 줄어들지 않고, 값이 클수록 더 빨리 줄어든다. */
+        </style>
+
+        <div id="container">
+            <div>1</div>
+            <div>2</div>
+            <div style="flex-shrink: 0;">3</div>
+            <div>4</div>
+            <div style="flex-shrink: 0.5;">5</div> 
+            <div>6</div>
+            <div style="flex-shrink: 1;">7</div>
+            <div>8</div>
+            <div style="flex-shrink: 2;">9</div>
+            <div>0</div>
+        </div>
+    </body>
+</html>

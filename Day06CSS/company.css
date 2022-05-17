@@ -1,0 +1,50 @@
+*{margin: 0; padding: 0;}
+ul{list-style-type: none;}
+a{text-decoration: none;}
+
+/* 왜 가운데로 안 가지???? */
+#page{
+    width: 800px;
+    margin: 0 auto;
+}
+header{
+    width: 800px;
+    height: 95px;
+    background-color: midnightblue;
+    position: relative;
+}
+#logo{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+#top_menu{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: white;
+}
+#top_menu a{color: white;}
+nav{
+    position: absolute;
+    bottom: 10px;
+    left: 220px;
+    font-size: 16px;
+}
+nav li{
+    display: inline;
+    margin-left: 30px;
+}
+nav li a{color: white;}
+
+#content li{
+    display: inline;
+    margin-left: 50px;
+}
+
+footer{
+    width: 800px;
+    height: 90px;
+    margin-top: 20px;
+}
+footer img{margin: 10px 0 0 60px;}

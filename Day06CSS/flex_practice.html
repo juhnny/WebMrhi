@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+        border: 1px dotted red;
+        }
+        li{list-style-type: none;}
+        a{text-decoration: none;}
+
+        header{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: green;
+            padding: 30px 0;
+        }
+        header *{
+            color: white;
+        }
+        nav{background-color: black;
+            display: flex;
+            flex-direction: column;}
+        nav a{
+            text-align: center;
+            color: white;
+        }
+        nav a:hover{
+            background-color: grey;
+            color: black;
+        }
+
+        aside, section#main{
+            padding: 20px 10px;
+        }
+        aside{
+            background-color: gainsboro;
+        }
+        aside > * {
+            margin-bottom: 10px;
+        }
+        section#main > article > *{
+            margin-bottom: 10px;
+        }
+        .fakeimg{
+            height: 200px;
+            background-color: grey;
+        }
+        footer{
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+
+    <!-- 데스크탑 -->
+    <style media="(min-width:640px)">
+        nav{
+            flex-direction: row;
+        }
+        #content{
+            display: flex;      
+            flex-wrap: wrap;
+        }
+        aside{
+            flex-basis: 30%;
+        }
+        #main{
+            flex-basis: 70%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>My Website</h1>
+            <p>With a <strong>flexible</strong> layout</p>
+        </header>
+        <nav>
+            <a href="#">Link</a></li>
+            <a href="#">Link</a></li>
+            <a href="#">Link</a></li>
+            <a href="#">Link</a></li>
+        </nav>
+        <section id="content">
+            <aside>
+                <h2>About Me</h2>
+                <p>Photo of me:</p>
+                <div class="fakeimg">Image</div>
+                <p>Some text about me in culpa qui officia deserunt mollit anim</p>
+                <h3>More Text</h3>
+                <p>Lorem ipsum dolor sit ame.</p>
+                <div class="fakeimg" style="height: 60px;">Image</div>
+                <div class="fakeimg" style="height: 60px;">Image</div>
+                <div class="fakeimg" style="height: 60px;">Image</div>
+    
+            </aside>
+            <section id="main">
+                <article>
+                    <h2>TITLE HEADING</h2>
+                    <p>Title description, Dec 7, 2017</p>
+                    <div class="fakeimg">Image</div>
+    
+                    <p>Some text..</p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, similique excepturi nesciunt amet fugit cumque facilis omnis delectus enim exercitationem deleniti sunt odit reprehenderit minus non voluptas! Illo, rerum cumque.
+                    </p>
+                </article>
+                <article>
+                    <h2>TITLE HEADING</h2>
+                    <p>Title description, Dec 7, 2017</p>
+                    <div class="fakeimg">Image</div>
+                    <p>Some text..</p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, similique excepturi nesciunt amet fugit cumque facilis omnis delectus enim exercitationem deleniti sunt odit reprehenderit minus non voluptas! Illo, rerum cumque.
+                    </p>
+                </article>
+            </section>
+        </section>
+        <footer>
+            <h2>Footer</h2>
+        </footer>
+        
+    </div>
+
+    
+</body>
+</html>

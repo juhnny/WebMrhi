@@ -1,0 +1,55 @@
+*{margin: 0; padding: 0;}
+ul{list-style-type: none;}
+a{text-decoration: none;}
+/* 위처럼 쓰고 시작 */
+
+header{
+    background-color: midnightblue;
+    position: relative
+}
+#logo{
+    /* margin-top: 30px;
+    margin-left: 30px; */
+    padding-top: 30px;
+    padding-left: 30px;
+}
+#top_menu{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: white;
+}
+#top_menu a{
+    color: white;
+}
+
+nav{
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    margin-top: 30px;
+}
+nav li a{
+    display: block;
+    text-align: center;
+    line-height: 2.5rem;
+    color: white;
+}
+nav li a:hover{
+    background-color: white;
+    color: midnightblue;
+}
+#main img{
+    width: 100%;
+    border: 1px solid grey;
+}
+#banner li{
+    border-bottom: 1px solid grey;
+}
+#banner li a{
+    display: block;
+    text-align: center;
+}
+
+footer img{
+    width:100%;
+}

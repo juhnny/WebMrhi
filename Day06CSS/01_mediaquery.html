@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>media query</title>
+    <style>
+        /* 반응형 웹 : 디바이스의 해상도에 따른 CSS 적용 */
+        /* 이를 위한 기술 media query */
+
+        /* 방법1. @media 키워드 이용 */
+        /* 크기가 작은 화면부터 먼저 설정하는 것이 조금 더 수월함 */
+        #aa{
+            width: 320px;
+            height: 100px;
+            background-color: orangered;
+        }
+        /*  */
+        @media (min-width : 560px){
+            #aa{
+                width: 560px;
+                background-color: orange;
+            }
+        }
+        
+    </style>
+
+    <!-- 방법2. 외부 스타일시트에 media 속성 적용 -->
+    <!-- and/or 조건도 가능 -->
+    <link rel="stylesheet" href="./01_mediaquery.css" media="(min-width : 680px) and (max-width:800px)">
+
+    <!-- 내부 스타일시트에서도 media 속성 적용 가능 -->
+    <style media="(min-width:800px)">
+        #aa{
+            width: 800px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="aa"></div>
+    
+</body>
+</html>

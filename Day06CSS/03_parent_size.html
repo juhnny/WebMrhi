@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>자식 요소의 display 타입에 따른 부모 요소의 사이즈</title>
+    <style>
+        *{border: 1px dotted red;}
+        /* 참고 */
+        /* 가장 외부 요소인 html의 높이가 wrap이기 때문에 body의 높이를 100%로 해봐야 화면을 꽉 채우지 못한다. */
+        /* 화면을 꽉 채우고 싶다면 html, body부터 height을 100%로 해놓고 시작해야 한다. */
+        html, body{height: 100%;}
+        html{border: 3px solid orange;}
+        body{border:3px solid green;}
+
+        div{border: 1px dotted blue; margin-top: 50px;}
+    </style>
+</head>
+<body>
+    <!-- 모든 html 요소들의 기본 높이는 wrap -->
+    <!-- 그런데 부모 box의 height이 언제나 자식의 box 높이를 감싸는 것은 아니다. -->
+
+    <!-- 블럭 안에 블럭 성격의 요소(블럭 혹은 인라인 블럭)가 있을 때만 블럭 전체(패딩 포함한 사이즈)를 감싸준다. -->
+    <!-- 그러나 인라인 요소가 들어있을 때는 컨텐츠로 생각해서인지 컨텐츠만(패딩 미포함) 감싼다. 오버플로우도 허용된다. -->
+
+    <!-- 블럭요소 안에 블럭 요소가 있을 때 - 보통 기대하는 형태. 문제가 없다. -->
+    <div>
+        <p style="padding: 20px">Block</p>
+    </div>
+
+    <!-- 인라인 블록 요소일 떄도 박스를 기준으로 감싼다. -->
+    <div>
+        <a href="#" style="padding: 20px; display: inline-block;">anchor - Inline block</a>
+    </div>
+
+    <!-- 블럭 요소 안에 인라인 요소가 자식으로 있을 때 - 언뜻 보면 자식 요소의 박스를 감싸는 것 같지만..-->
+    <div>
+        <a>anchor</a>
+        <em>em</em>
+        <strong>strong</strong>
+    </div>
+
+    <!-- 블럭이 wrap하는 기준은 내용물의 컨텐츠 기준. 패딩은 무시됨 -->
+    <div>
+        <a href="#" style="padding: 20px;">anchor</a>
+        <em style="padding: 20px;">em</em>
+        <strong style="padding: 20px;">strong</strong>
+    </div>
+
+
+</body>
+</html>
