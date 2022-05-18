@@ -9,10 +9,11 @@
         //1. 수치형: number - 정수, 실수
         //2. 문자형 : string - 한문자, 문자열 '', "" 동일함
         //3. 논리형: boolean - true, false
-        //4. 객체형 : object, 내장, 함수, new 키워드 이용
-        //5. undefined: 값이 없는 변수
+        //4. 객체형 : object, 내장, 함수. new 키워드 이용
+        //5. undefined: 타입이 정해지지 않은 상태를 나타내는 타입. 값은 undefined(타입은 모르겠네)
         //  undefined는 자료형이 안 정해진 것이고
         //  null은 자료형은 정해져 있으나 값이 없는 상태
+        // https://siyoon210.tistory.com/148
 
         //변수 선언
         var a;
@@ -62,8 +63,7 @@
             return 123
         }
         document.write(g + "<br>") //함수 선언과 정의문이 그대로 출력됨
-        g() //함수의 호출
-        document.write(g() + "<br>")
+        document.write(g() + "<br>") //함수의 호출
         document.write(typeof(g) + "<br>") //타입의 이름이 function
         
         //함수를 변수에 대입할 수 있고 그 값을 다른 함수에 전달할 수도 있다.
@@ -104,10 +104,15 @@
         document.write(m + "<br>") 
         m = 3.14e-3
         document.write(m + "<br>") 
-        
 
         document.write("<br>")
 
+        //undefined와 null
+        //둘이 값은 같게 나오지만 타입까지 검사하면 다르다.
+        document.write(undefined == null + "<br>") //true
+        document.write(undefined === null + "<br>") //false
+        document.write(typeof(undefined) + "<br>") //undefined
+        document.write(typeof(null) + "<br>") //object - JS에서 null은 object 타입
     </script>
 </head>
 <body>

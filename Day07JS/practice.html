@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- Chapter8 연습문제 -->
+    <!-- 6번 -->
+    <script>
+        function aaa(){
+            var a = 10
+            if(a > 5){
+                a = 7
+            }
+            alert(a)
+        }
+        // aaa()
+    </script>
+    <!-- 10번 -->
+    <script>
+        function bbb(){
+            while(true){
+                var num = prompt("Input a integer less than 100")
+                num = parseFloat(num)
+                if(Number.isNaN(num)){ //숫자 변환이 안되는 문자열이면
+                    alert("숫자를 입력해주세요.")
+                    continue
+                }
+                if(num % 1 != 0){ //정수가 아니면
+                    alert("정수를 입력해주세요.")
+                    continue
+                }
+                if(num >= 100){ //100 이상이면
+                    alert("100보다 작은 수를 입력해주세요.")
+                    continue
+                }
+
+                document.write("정수 " + num +"을 입력받았습니다.")
+                break
+            }
+        }
+
+        // bbb()
+    </script>
+
+    <!-- 1부터 100까지의 합 구하기 -->
+    <script>
+        function ccc(){
+            var sum = 0 //0이라고 안써주니 NaN이 나오네..
+        for(var i= 1; i <= 100; i++){
+            sum += i
+        }
+        alert(sum)
+        }
+
+        // ccc()
+    </script>
+
+    <!-- 태양계 행성 이름을 배열에 저장하고 alert로 출력 -->
+    <script>
+        function ddd(){
+            var planets = ["수", "금", "지"]
+        for(var idx in planets){
+            alert(planets[idx])
+        }
+        }
+
+        // ddd()
+    </script>
+
+    <!-- 13번 -->
+    <script>
+        function process(answer){
+            if(answer){
+                alert("좋습니다. 게임 시작!")
+            } else{
+                alert("잘 가세요.")
+            }
+        }
+        process(confirm("게임 한판 하실래요?"))
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

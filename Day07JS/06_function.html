@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>함수 function</title>
+
+        <script>
+            //함수 선언 및 호출(선언적 함수라고 부름)
+            document.write("<hr>")
+            document.write('<h4>함수 선언 및 호출</h4>')
+
+            function aaa(){
+                document.write("aaa <br>")
+            }
+            aaa() //함수 호출
+            aaa //근데 이렇게 해도 함수 실행이 되네?
+
+            //다른 언어와 다른 점
+            //선언적 함수는 만든 순서와 상관없이 호출할 수 있음
+            bbb() //아직 선언을 안했으니 이대로는 에러가 남
+            document.write("bbb()가 에러나면 안 나오는 메시지 <br>")
+
+            //하지만 아래에서라도 함수 선언을 해주면 작동함
+            //선언적 함수는 프로그램이 실행되기 전에 모두 load 됨
+            function bbb(){
+                document.write("bbb <br>")
+            }
+            
+            //동일한 script 영역 안에서는 순서가 상관없지만
+            //다른 script 영역들은 별도의 영역. 별개의 문서라고 생각해도 됨
+            //외부 스크립트 문서에 있는 함수들은 알아들을 수 없고
+            //같은 html 문서에 있는 스크립트들 간에는 알아들을 순 있지만 순서가 중요
+
+            ccc() //뒤에 오는 스크립트문의 함수는 못 알아들어 에러
+            
+            //fatal 에러가 일어나면 script 문서 전체가 나오지 않는다.
+            //fatal 에러가 아니라면 해당 script 실행은 쭉 하다가 거기서 끝
+            //하지만 다른 script 문서는 이어서 실행된다.
+
+            //에러는 브라우저 개발자 도구의 console에서 확인할 수 있다.
+            document.write("ccc()가 에러나면 안 나오는 메시지")
+        </script>
+
+        <script>
+            document.write("<hr>")
+
+            bbb() //앞에 오는 스크립트문의 함수는 알아듣는다.
+
+            function ccc(){
+                document.write("ccc <br>")
+            }
+        </script>
+
+        <!-- 함수에 파라미터 전달하기 -->
+        <script>
+            document.write('<hr>')
+            document.write('<h4>함수 파라미터 전달</h4>')
+
+            //파라미터에 자료형도 없고 var 키워드도 쓰면 안됨
+            function ddd(a){
+                document.write(a + "<br>")
+            } 
+            //아래 예시에서 덮어쓰기 되어 다르게 출력되는 중
+
+            ddd(10)
+            ddd("Hey")
+            ddd(new Date())
+
+            //파라미터를 전달하지 않으면?
+            //다른 언어에서는 다 컴파일 오류지만 JS에서는 문법적으로는 허용
+            ddd() //undefined
+
+            //파라미터 2개 짜리
+            function eee(a, b){
+                document.write(a +", " + b + "<br>")
+
+                //파라미터가 전달되지 않는 경우를 걸러내고 싶다면
+                if(a == undefined || b == undefined){
+                    document.write("이상한 수가 입력됐어")
+                    return
+                }
+
+                var c = a + b
+                document.write("결과: " + c + "<br>")
+            }
+            eee(5, 6)
+            eee(5, ) //5, undefined가 전달되고 결과는 NaN
+
+            //같은 함수를 또 만들면?
+            function ddd(a){
+                document.write("똑같은 함수를 또 만들면 에러? ")
+                document.write("No. 덮어쓰기가 됨 <br>")
+                // 함수 로딩이 먼저기 때문에 위에서 ddd 함수를 호출한 곳들도 영향을 받음
+                //하...이건 좀..
+            }
+
+            //오버로딩은 되나?
+            //JS는 C언어 기반이라 오버로딩은 없엉
+            function ddd(){
+                document.write("오버로딩은 가능? ")
+                document.write("No. 그냥 덮어쓰기야 <br>")
+            }
+            
+        </script>
+
+        <!-- 리턴이 있는 함수 -->
+        <script>
+            document.write("<hr>")
+            document.write('<h4> 리턴이 있는 함수</h4>')
+
+            //리턴 키워드가 있어도 리턴타입을 명시하지 않음
+            function ggg(){
+                //뭐든 리턴 가능
+                return 10
+                return "aaa" //다른 언어에서는 의미없는 명령이라고 에러지만 JS에서는 에러는 아님
+                return true 
+                return 5 > 3
+                return new Date()
+            }
+            document.write(ggg() + "<br>")
+
+            //사용자정의 객체도 리턴 가능. 함수도 가능
+            function getSam(){
+                return {name:"Sam", age: 20}
+            }
+            var sam = getSam()
+            document.write(sam.name + ", " + sam.age + "<br>")
+        </script>
+
+        <!-- 지역변수와 전역변수 -->
+        <script>
+            document.write("<hr>")
+            document.write('<h4> 지역변수와 전역변수</h4>')
+
+            function mmm(){
+                var a = 20 // 지역변수 - 함수 안에 위치한 변수
+
+                //전역변수 - var 키워드 없이 선언(?)하면 어디에서 선언하듯 (무조건 함수 안에 있어도) 전역변수
+                // 너무 헷갈리는 문법이라 ES6에서는 없앴으나 브라우저는 모든 레거시를 포함해 동작하므로 주의
+                // 쓰지 말길 권함
+                b = 50
+
+                //C나 Java, Kotlin에서 '지역'의 기준은 중괄호(조건문, 반복문의 중괄호 포함)
+                //JS에서 '지역'의 기준은 함수의 중괄호만!(조건문, 반복문 중괄호는 미포함)
+                if(true){
+                    var c = 100
+                }
+
+                //위 두 특성은 ES6에서는 모두 없애버림
+
+                document.write("mmm a: " + a + "<br>")
+                document.write("mmm c: " + c + "<br>") //c도 JS에서는 지역변수가 아님
+            }
+
+            mmm()
+            // document.write(a + "<br>") //지역변수 a를 함수 밖에서 사용하면 에러
+            document.write("b: " + b + "<br>") //전역변수 b
+            document.write("c: " + c + "<br>") 
+
+        </script>
+
+        <!-- 익명함수 -->
+        <script>
+            document.write("<hr>")
+            document.write('<h4> 익명함수</h4>')
+
+            //익명함수는 선언전 함수와 다르게 프로그램 실행 전에 먼저 로드되지 않는다.
+            //그래서 선언-호출 순서가 중요
+            // show() //에러
+
+            //반드시 변수에 저장해서 사용해야 함
+            var show = function(){
+                document.write("show function <br>")
+            }
+
+            show //함수를 저장하는 변수명이 함수명 
+            show() //함수의 호출
+
+            var show2 = show //다른 변수에 대입도 물론 가능
+            show2()
+        </script>
+
+        <!-- 함수를 파라미터 혹은 리턴으로 전달하기 -->
+        <script>
+            document.write("<hr>")
+            document.write('<h4> 함수를 파라미터 혹은 리턴으로 전달하기</h4>')
+            
+            //선언적 함수
+            function kkk(f1){
+                f1() //전달받은 함수 호출
+            }
+
+            //익명 함수
+            var sss = function(){
+                document.write("sss function <br>")
+            }
+
+            kkk(sss)
+            
+            //변수에 저장하지 않고 곧바로 익명함수를 전달하기
+            kkk(function(){
+                document.write("anonymous function <br>")
+            })
+
+            //이렇게 함수를 인자로 전달하는 게 함수형 프로그래밍 언어의 기본 방법론
+
+            //리턴타입으로 함수 되돌려 받기
+            function ttt(){
+                var ppp = function(){
+                    document.write("ppp function <br>")
+                }
+
+                return ppp //함수를 리턴
+            }
+
+            var z = ttt() //리턴된 익명함수를 z가 받음
+            z() 
+        </script>
+    </head>
+</html>
