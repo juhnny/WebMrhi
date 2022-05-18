@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <!-- JavaScript의 core 문법 정식명칭 - ECMAscript(에크마 스크립트) -->
+    <!-- 브라우저가 interprete해서 실행하는 언어 -->
+    <!-- 내부 스크립트 -->
+    <script>
+        // 이 영역 안에서는 JS의 문법을 따른다.
+
+        // HTML의 body 영역 안에 했던 작업들을 모두 스크립트로 처리하는 게 가능
+        // 내장객체 document를 사용한다. document가 body 영역이라고 보면 된다.
+        // JS에서는 큰따옴표나 작은따옴표나 똑같이 인식된다.
+        //JS는 문장의 끝을 나타내는 세미콜론을 생략해도 된다. - 요즘 언어들 추세
+        document.write("Hello, World!")
+        document.write("자동 줄바꿈은 안된다.<br> br 태그를 이용한다.")
+        document.write('<hr>') //태그문을 쓰면 해석되어 그려짐(렌더링)
+        document.write("<a href='http://www.naver.com'>Naver</a>") //안쪽과 바깥쪽은 다른 따옴표를 써야 한다.
+        document.write("<hr>")
+
+        // JS는 변수나 반복문, 연산자 등이 가능
+        var a = 10
+        var b = new Date()
+        document.write(b)
+        document.write("<br>")
+
+        for(var i = 0; i<3; i++){
+            document.write(i + ", ") //문자열과 숫자를 결합하면 문자열로 변환
+        }
+
+        //버튼 클릭 시 호출되도록 onclick 속성으로 동작시킬 함수
+        function aaa(){
+            alert("Clicked!");
+            //id 속성이 p1인 요소를 찾아와 참조하기
+            var e = document.getElementById("p1")
+            e.innerHTML = "Prince"
+        } 
+
+        //자료형
+        // undefined, number, string, boolean, 참조형?
+        //자료형이 없는 건 아니다. 값을 넣으면 그 자료형이 된다. 하지만 값을 넣기 전이면 undefined형
+        //JS의 모든 자료형은 객체다. 코틀린처럼. 멤버변수와 메소드를 갖고 있다.
+
+        // JS에는 클래스 키워드가 없다가 나중에 생겨났고 ES6부터 활성화됐다.
+        // 그 전까지는 모두 익명 클래스처럼 만들었다.
+        // 내부적으로 JS에서 클래스는 배열과 똑같이 생겼다.
+        var myCar = {model:"bmw", color:"red", hp:500}
+        document.write(myCar.model + "<br>")
+
+        //prompt()
+        var age = prompt("나이를 입력하세요.")
+        document.write(age + "<br>")
+
+        //조건문, 반복문 모두 C와 비슷
+        
+        //배열을 생성하는 두가지 방법
+        var fruits = ['a', 'b', 'c']
+        var fruits2 = new Array('a', 'b', 'c')
+        //JS에서 배열은 개수를 자유롭게 늘릴 수 있다.
+        fruits2[3] = 'd'
+        fruits2[10] = 'e'
+        document.write(fruits2[10] + "<br>")
+    </script>
+</head>
+<body>
+    <!-- head 영역은 body 영역보다 먼저 실행된다. body에 쓴 내용은 위 스크립트보다 나중에 출력된다. -->
+    <hr>
+    Hello I'm in body
+    <p>
+        <button onclick="aaa()">Button</button>
+    </p>
+
+    <p id="p1">Frog</p>
+</body>
+</html>

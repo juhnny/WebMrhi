@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function cal(){
+            var in1 = document.getElementById("in1")
+            var in2 = document.getElementById("in2")
+
+            var a = parseFloat(in1.value)
+            var b = parseFloat(in2.value)
+            
+            var result = document.getElementById("result")
+            result.value = a + b
+        }
+
+        function changeColor(){
+            var h1 = document.getElementById("h1")
+            h1.style.backgroundColor = 'blue'
+            h1.style.color = 'red'
+            h1.style.border = '2px solid yellow'
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="in1"><br>
+    <input type="text" id="in2"><br>
+    <button onclick="cal()">계산</button> <br>
+    <!-- 입력 용도이긴 하지만 계산 결과를 보여주는 용도로 한번 써보자 -->
+    <input type="text" id="result">
+
+    <!-- HTML 요소의 스타일 변경 -->
+    <h2 id="h1">This is Heading</h2>
+    <button onclick="changeColor()">Change bg color</button>
+
+    <!-- 이미지 변경 -->
+    <img src="./image/profile.jpg" alt="profile image" width="30%">
+    <button onclick="changeImg()">이미지 변경</button>
+
+    <script>
+        function changeImg(){
+            var imgs = document.getElementsByTagName("img") //해당 태그 요소들의 배열
+            //요소 순서대로 들어가 있음
+            imgs[0].src = "./image/profile2.jpg"
+        }
+    </script>
+
+    <!-- HTML와 JS가 혼재되어 있는 경우도 아주 많음 -->
+    <table border = "1" style="text-align: center;">
+        <tr>
+            <th>a</th>
+        </tr>
+
+        <script>
+            for(var i = 1; i < 10; i++){
+                document.write('<tr><td>'+ i +'</td></tr>')
+            }
+        </script>
+    </table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS array</title>
+    <script>
+        //JS에서 배열 만드는 두가지 방법
+        //1. 리터럴 배열
+        var arr = [10, 20 , 30]
+        document.write(arr[0] + '<br>')
+        document.write(arr[1] + '<br>')
+        document.write(arr[2] + '<br>')
+
+        //JS는 동적타입 언어이기에 하나의 배열 안에 여러 자료형을 넣을 수 있음
+        var arr2 = [10, "aaa", false, function(){document.write("fun")}]
+        document.write(arr2[3] + '<br>')
+
+        //심지어 인덱스가 틀려도 OutOfBound 예외 발생 X
+        document.write(arr2[10] + '<br>')
+
+        //배열임에도 동적으로 요소의 개수를 변경할 수 있음
+        //배열과 리스트의 가장 큰 차이였는데 리스트를 써야 할 이유가 사라짐
+        document.write("배열 길이: " + arr2.length + "<br>")
+        //인덱스 번호를 건너 뛰면 그 사이 요소들은 자동으로 변수가 생성되고 
+        //값은 주어지지 않았으니 undefined
+        arr2[9] = "bbb"
+        document.write("배열 길이: " + arr2.length + "<br>")
+        document.write(arr2[7] + "<hr>")
+        
+        //2. Array 사용
+        var arr3 = new Array(10, "Sam", false)
+        for(var i = 0; i < arr3.length; i++){
+            document.write(arr3[i] + ", ")
+        }
+        document.write("<hr>")
+
+        //forEach를 사용하면
+        for(var index in arr3){ //코틀린은 in 앞자리 파라미터에 요소가 오지만 JS에서는 인덱스가 온다.
+            document.write(arr3[index] + ", ")
+        }
+        document.write("<hr>")
+
+        //배열을 먼저 만들어놓고 나중에 요소 추가하기
+        var arr4 = new Array()
+        arr4[0] = "apple"
+        arr4[1] = 10
+        arr4[2] = new Date()
+        for(var index in arr4){
+            document.write(arr4[index] + ", ")
+        }
+        document.write("<br>")
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS operator</title>
+        <script>
+            //연산자 중 특이점
+            
+            //비교연산자의 판단 기준
+            var a= 1;
+            var b = 1.0
+            var c = "1"
+            // == 연산자는 오로지 값만 비교. 자료형이 다른 것은 판단하지 않음
+            document.write(a == b) //true
+            document.write("<br>")
+            document.write(a == c) //true
+            document.write("<br>")
+            document.write(b == c) //true
+            document.write("<br>")
+
+            // === 연산자 - 값과 자료형을 모두 비교
+            document.write(a === b) //true - 정수형과 실수형을 구분하지 않음. 모두 숫자형
+            document.write("<br>")
+            document.write(a === c) //false
+            document.write("<br>")
+            document.write(b === c) //false
+            document.write("<br>")
+
+            //표현가능한 최대값을 알아보는 방법
+            //number 타입이 사용 가능한 최대, 최소(절대)값
+            //웬만한 숫자는 걱정 없이 쓸 수 있다.
+            document.write(Number.MAX_VALUE + "<br>") //1.7976931348623157e+308
+            document.write(Number.MIN_VALUE + "<br>") //5e-324
+
+            //형변환
+            //number -> string
+            var n = 1
+            n = String(n) 
+            document.write(typeof(n) + "<br>")
+            //실제로는 그냥 결합연산자를 사용
+            var m = 1
+            m = m + ""
+            document.write(typeof(m) + "<br>")
+
+            //string -> number(정수)
+            var s = "10"
+            s = parseInt(s)
+            document.write(typeof(s) + "<br>")
+
+            //string -> number(실수)
+            var ss = "3.14"
+            ss = parseFloat(ss)
+            document.write(typeof(ss) + "<br>")
+
+            //혹시 숫자로 바꿀 수 없는 문자열이라면?
+            var sss = "aaa"
+            sss = parseInt(sss)
+            document.write(sss + "<br>") //NaN - Not a Number
+            document.write(typeof(sss) + "<br>") //type은 number로 나오긴 나온다.
+
+            //사용자의 입력은 모두 string 타입이기 때문에 산술연산을 위해 파싱 필요
+            var age = prompt("나이를 입력하세요.")
+            document.write(age + 3 + "<br>") //산술연산이 안됨
+            document.write(parseInt(age) + 3 + "<br>") //parse해서 사용
+
+
+
+
+        </script>
+    </head>
+</html>
