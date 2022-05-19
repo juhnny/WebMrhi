@@ -49,12 +49,14 @@
         //활용 - 두 수가 특정 자리수까지 같은지 비교
         var n1 = 3.141414
         var n2 = 3.14
-        document.write((n1.toFixed(2) == n1.toFixed(2)) + "<br>")
+        document.write((n1.toFixed(2) == n1.toFixed(2)) + "두 수 비교 <br>")
+        document.write("<hr>")
 
         //어디서 보니까 JS가 이걸 같다고 하던데..???
-        var a1 = 0.99999999
+        //고정소수점(정수형) 방식과 부동소수점(실수형) 방식의 차이 때문에 오차 발생. 특정 자리수 이하부터는 정확한 비교가 불가.
+        var a1 = 0.99999999999999999 //소수점 아래 17번째 자리부터 1과 동일하게 판단
         var a2 = 1
-        document.write((a == b) + "<br>")
+        document.write((a1 == a2) + "<br>")
     </script>
 </head>
 <body>

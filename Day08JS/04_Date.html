@@ -25,8 +25,8 @@
         document.write(date.getSeconds() + "<br>") 
         document.write(date.getTime() + "<br>") // 1970/1/1 09:00:00부터 ms마다 1씩 증가
         var d = new Date(0)
-        document.write(d + "<br>") // 1970/1/1 09:00:00부터 ms마다 1씩 증가
-        document.write("<hr>") // 1970/1/1 09:00:00부터 ms마다 1씩 증가
+        document.write(d + "<br>")
+        document.write("<hr>")
 
         //set
         date.setFullYear(2018)
@@ -46,7 +46,7 @@
         document.write(date4 + "<br>") 
         
         //두 날짜 사이의 차이
-        var diff = date3.getTime - date4.getTime
+        var diff = date3.getTime() - date4.getTime()
         diff = date3 - date4 //자동으로 getTime()으로 계산
         document.write(diff + "<br>")
 

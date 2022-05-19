@@ -59,10 +59,50 @@
 
         //대소문자 무시 + 모든 매치되는 문자열 찾기
         document.write(s.match(/go/ig) + "<br>") 
+        document.write("<hr>")        
 
         //replace()
-        
+        //비속어를 xxx로 변환하는 등의 처리에 사용
+        var str = "Hello World"
+        document.write(str.replace("Hello", "Metugi") + "<br>") 
+        document.write(str.replace("o", " Metugi") + "<br>") 
+        document.write(str.replace(" ", "_") + "<br>") 
 
+        document.write(str.replace("hello", "Lotte") + "<br>") //대소문자 구분. 일치하는 문자열이 없으면 원래 문자열 그대로 리턴
+        document.write(str.replace(/hello/i, "Lotte") + "<br>") //대소문자 무시하려면 옵션 i
+
+        var str = "Hello hell hell World"
+        document.write(str.replace("hell", "Lotte") + "<br>") //일치하는 첫번째만 변경됨
+        document.write(str.replace(/hell/g, "Lotte") + "<br>") //모두 변경하고 싶다면 옵션 g
+        document.write("<hr>")        
+
+        //split()
+        var str = "one,two,three,four,five" 
+        var arr = str.split(",")
+        document.write(arr + "<br>") 
+        document.write(arr.length + "<br>") 
+        document.write(arr[1] + "<br>") 
+
+        //이메일 주소 분리에 유용
+        var email = "aaa@naver.com"
+        var id = email.split("@")[0]
+        var service = email.split("@")[1]
+        document.write(id + ", " + service + "<br>")
+        document.write("<hr>")        
+
+        //문자열에 HTML 요소 적용
+        //w3schools에서 보면 권장하진 않는다고..
+        document.write("<strong>" + email + "</strong>" + "<br>")
+        document.write(email.bold() + "<br>")
+        document.write(email.a() + "<br>")
+
+
+
+
+        
+        document.write(email.bold() + "<br>")
+        document.write(email.bold() + "<br>")
+        document.write(email.bold() + "<br>")
 
 
 

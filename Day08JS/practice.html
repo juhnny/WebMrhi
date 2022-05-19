@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practice</title>
+    <script>
+        // var date = new Date()
+        // var start = date.getTime()
+        // document.write(start + "<br>")
+        // var sum = 0
+        // for(var i = 0; i <= 1000000; i++){
+        //     sum += i
+        // }
+        // var end = new Date().getTime()
+        // var timeSpent = end - start
+        // document.write(sum + "<br>")
+        // document.write(end + "<br>")
+        // document.write("소요시간: " + timeSpent + "ms <br>")
+
+        // function ex04(){
+        // var date = new Date()
+        // var start = date.getTime()
+        // document.write(start + "<br>")
+        // var sum = 0
+        // for(var i = 0; i <= 1000000; i++){
+        //     sum += i
+        // }
+        // var end = new Date().getTime()
+        // var timeSpent = end - start
+        // document.write(sum + "<br>")
+        // document.write(end + "<br>")
+        // document.write("소요시간: " + timeSpent + "ms <br>")
+        // }
+        // ex04()
+        
+    </script>
+    <script>
+        var start = new Date().getTime()
+
+        var sum = 0
+        for(var i = 0; i <= 1000000; i++){
+            sum += i
+        }
+
+        document.write(new Date().getTime() - start + "<br>")
+
+        function bbb(){
+            var start2 = new Date().getTime()
+
+            var sum2 = 0
+            for(var k = 0; k <= 1000000; k++){
+                sum2 += k
+            }
+
+            document.write(new Date().getTime() - start2 + "<br>")
+        }
+        bbb()
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
