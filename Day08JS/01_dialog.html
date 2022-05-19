@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog</title>
+    <!-- Dialog -->
+    <script>
+        // alert - 일반적인 경고창. 알림이 여러개면 순차적으로 나타남
+        alert()
+        alert("Hey")
+
+        // confirm - 사용자에게 확인/취소를 선택하게 하는 다이얼로그
+        var answer = confirm("Confirm to exit?") //결과를 true/false로 반환
+        document.write(answer + "<br>")
+
+        // prompt - 사용자 입력 다이얼로그
+        // 글씨를 입력하고 확인을 선택하면 그 결과를 string으로 리턴, 취소를 누르면 null 리턴
+        var age = prompt("Input your age", 100) //두번째 옵션 파라미터로 기본값 줄 수 있음
+        document.write(age + '<br>')
+        document.write(typeof(age) + '<br>')
+
+    </script>
+
+    내장객체에는 두가지가 있다. 생성자 함수만 만들어져 있는 것들(정확히는 아직 객체가 아님), 아예 생성까지 돼있는 애들
+    객체의 메소드 안에서 멤버변수를 가리킬 때는 반드시 this.을 써줘야 한다. 안 쓰면 전역변수가 된다.
+    객체를 만든 방법 세가지 - 리터럴 객체, 생성자 함수, 클래스 사용
+    
+    var model 지역변수 만든 것
+    model 전역변수 만든 것
+    this.model 멤버변수 만든 것
+
+    자바에서는 메소드가 클래스 정보 안에 저장돼있고(Method 영역에 저장) 객체마다 생성하지 않는다. 
+    메소드는 데이터와 달리 객체마다 존재할 필요가 없으니까. 
+    JS에서는 그냥 메소드를 만들면 객체마다 메소드 변수가 만들어진다. 중복이 발생
+    이를 방지하기 위해 prototype으로 만든다. static 같은 개념. 
+    prototype으로 만들면 객체마다 만들어지지 않는다.
+
+</head>
+<body>
+    
+</body>
+</html>

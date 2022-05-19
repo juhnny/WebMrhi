@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date 내장객체</title>
+    <script>
+        //JS의 유용한 내장 생성자 함수들 [ Date, Number, Math, Array ]
+        //자바의 내장 클래스 같은 것들
+
+        //1. Date
+        var date = new Date()
+        document.write(date + "<br>") //Thu May 19 2022 11:42:29 GMT+0900 (한국 표준시)
+        document.write(date.toString() + "<br>") //Thu May 19 2022 11:42:29 GMT+0900 (한국 표준시)
+        document.write(typeof(date) + "<br>") //모든 객체의 자료형은 object
+
+        //유용한 기능 메소드들
+        document.write(date.toDateString() + "<br>") //Thu May 19 2022 - 날짜만 스트링으로
+        document.write(date.toLocaleString() + "<br>") //2022. 5. 19. 오전 11:42:29 - 지역 날짜와 시간
+        document.write(date.getYear() + "<br>") //1900년을 기준으로 1씩 증가. 불편
+        document.write(date.getFullYear() + "<br>") //2022
+        document.write(date.getMonth() + "<br>") //0~11임에 유의. 12가 넘어가면 해가 넘어감
+        document.write(date.getDate() + "<br>") //2022
+        document.write(date.getHours() + "<br>") //24시간제
+        document.write(date.getMinutes() + "<br>") 
+        document.write(date.getSeconds() + "<br>") 
+        document.write(date.getTime() + "<br>") // 1970/1/1 09:00:00부터 ms마다 1씩 증가
+        var d = new Date(0)
+        document.write(d + "<br>") // 1970/1/1 09:00:00부터 ms마다 1씩 증가
+        document.write("<hr>") // 1970/1/1 09:00:00부터 ms마다 1씩 증가
+
+        //set
+        date.setFullYear(2018)
+        document.write(date + "<br>") 
+
+        //생성자함수의 파라미터로 날짜 지정 가능
+        var date2 = new Date(2025, 11, 25) //크리스마스. 시간을 안 주면 자정으로 입력됨 
+        document.write(date2 + "<br>") 
+
+        var date3 = new Date("Thu Jun 25 2050 11:42:29 GMT+0900") //요일은 안 맞아도 그냥 알아서 수정되네
+        document.write(date3 + "<br>") 
+
+        // var date4 = new Date("2050. 5. 19. 오전 11:42:29") //이건 못 알아듣네? 위에서 자기가 출력한 건데
+        // var date4 = new Date("2050. 5. 19. 11:42:29")
+        var date4 = new Date("2050. 5. 19. 20:42:29")
+        // var date4 = new Date("2050. 5. 19.")
+        document.write(date4 + "<br>") 
+        
+        //두 날짜 사이의 차이
+        var diff = date3.getTime - date4.getTime
+        diff = date3 - date4 //자동으로 getTime()으로 계산
+        document.write(diff + "<br>")
+
+        //ms를 일로 변환
+        var dayDiff = diff/(1000*60*60*24)
+        document.write(dayDiff + "<br>")
+        //소수점 제거
+        dayDiff = Math.floor(dayDiff)
+        document.write("D-day: " + dayDiff + "<br>")
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

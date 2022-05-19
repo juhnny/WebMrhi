@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object</title>
+    <script>
+        // JS에서 사용하는 객체의 두가지 종류
+        // 1. 내장객체
+        // 이미 객체로 생성돼있는 애들 - document, window, navigation, etc. ... 
+        // 생성자 함수만 만들어져 있어서 new 가 필요한 애들 - Date, String, Number, Array, ...
+
+        // 2. 사용자정의 객체
+        // 3가지 방법 - 리터럴 객체, 생성자 함수, class 키워드(이건 나중에 수업)
+        
+        // 1) 리터럴 객체 - 객체를 생성하면서 멤버를 설계하는 방식
+        var person = {
+            //속성 property - 멤버변수
+            // JSON과 유사한 형식 - 키값에 따옴표 안쓰는 게 차이
+            name : "Jun",
+            age : 30,
+
+            //메소드 method - 멤버함수
+            show : function(){
+                //JS에서는 객체 안에서 멤버를 참조하기 위해 반드시 this 필요
+                // document.write(name + ", " + age + "<br>") //name, age를 그냥 참조하면 에러 - Uncaught ReferenceError: age is not defined
+                document.write(this.name + ", " + this.age + "<br>")
+            },
+
+            //파라미터가 있는 메소드
+            add : function(a, b){
+                var c = a + b
+                document.write("result: " + c + "<br>")
+            }
+        }
+        person.show()
+        person.add(5, 6)
+        //파라미터가 없는 메소드에 인수를 주면? 컴파일 에러는 아니지만 값은 무시됨. 파라미터로 뭐 할 게 없으니까..
+        person.show(10)
+        //파라미터가 있는 메소드에 인수를 안 주면? 파라미터가 undefined로 인식됨. undefined로 + 산술연산을 하려고 하니 NaN이라고 알려줌
+        person.add()
+
+        //객체에 없는 메소드를 호출하면? 실행 시 에러
+        // person.substract()
+        document.write("위에 에러가 있으면 안 나오는 문장 <br>")
+
+        document.write("<hr>")
+
+        //JS는 유연한 언어여서 심지어 객체를 생성한 후에 멤버를 추가할 수도 있음
+        person.tel = "01012341234" //property 추가
+        document.write(person.tel + "<br>")
+
+        person.out = function(){
+            document.write("out() ", this.name + ", " + this.age + "<br>")
+        }
+        person.out()
+
+        //값을 대입하지 않은 property를 사용하면?
+        document.write(person.address + "<br>") //속성을 추가한 것임. 다만 값을 입력하지 않아 undefined
+        
+        document.write("<hr>")
+
+        //만약 같은 모양을 가진 또 다른 Person 객체를 만들고 싶다면?
+        //기본적으로는 리터럴 객체 설계를 매번 다시 작성해야 함 ;;; 
+
+        //create() 메소드 - 객체 복사 기능
+        //Object 내장객체(생성자 함수)의 prototype(static과 유사) 메소드
+        var p1 = {
+            name : "John",
+            show : function(){
+                document.write(this.name + "<br>")
+            }
+        }
+        p1.show()
+
+        var p2 = Object.create(p1)
+        p2.name = "Jack"
+        p2.show()
+
+        document.write("<hr>")
+
+        // 2) 생성자 함수 이용 - new 키워드로 객체 생성
+
+        //생성자 함수명은 파스칼 표기법이 컨벤션. 클래스처럼..
+        function Student(){
+            //속성 선언(this 키워드 필요)
+            this.name = "Kim"
+            this.age = 25
+            this.major = "Mathmatics"
+
+            //이렇게 쓰면 그냥 지역변수
+            var height = 172
+
+            //이렇게 쓰면 전역변수
+            address = "Seoul"
+
+            //this 키워드를 써서 만들어야 메소드(멤버함수)가 됨
+            this.show = function(){
+                document.write("show() name: " + this.name + " age: " + this.age + " major: " + this.major + "<br>")
+            }
+
+            //이렇게 만들면 그냥 지역함수
+            function aaa(){
+                document.write("aaa <br>")
+            }
+
+            this.setMembers = function(name, age, major){
+                this.name = name
+                this.age = age
+                this.major = major
+                document.write("setMembers() <br>")
+            }
+            
+        }
+
+        var stu = new Student()
+        //property 사용
+        document.write(stu.name + "<br>")
+        document.write(stu.height + "<br>") //지역변수 height은 어차피 못알아듣는다. 새로운 멤버변수 height을 추가한 것으로 인식. 값을 대입하지 않았으니 undefined
+        document.write(stu.address + "<br>") //전역변수 height이 아니라 새로운 멤버변수 height을 추가한 것으로 인식. 값을 대입하지 않았으니 undefined
+        document.write(address + "<br>") //함수 안에서 만든 전역변수 address
+
+        //method 사용
+        stu.show()
+        // stu.aaa() //Uncaught TypeError: stu.aaa is not a function
+
+        //생성자 함수는 객체를 만들면 재사용 가능
+        var stu2 = new Student()
+        stu2.name = "Tom"
+
+        //객체 생성 시에 데이터 값을 입력하기 위한 기능 메소드가 있으면 좋을 것
+        stu2.setMembers("Tom", 40, "Physics")
+        stu2.show()
+
+        //아예 생성자 함수 자체를 활용하자
+        function Worker(name, age, job){
+            this.name = name
+            this.age = age
+            this.job = job
+            this.show = function(){
+                document.write("name: " + this.name + " age: " + this.age +" job: " + this.job +"<br>")
+            }
+        }
+        var worker = new Worker("Jim", 22, "Driver")
+        worker.show()
+        document.write("<hr>")
+
+        //추가
+        // in 연산자
+        document.write('name' in worker) //name 속성이 있으면 true
+        document.write('show' in worker) //show 메소드가 있으면 true
+        document.write('bbb' in worker) //show 메소드가 있으면 true
+        document.write("<hr>")
+        
+        //객체 안에 다른 객체가 멤버로 있을 수도 있음
+        var flight = {
+            airline: "Korean Air",
+            arrival : {
+                country: "Mexico",
+                city: "MexicoCity"
+            }
+        }
+
+        document.write(flight.airline + "<br>")
+        document.write(flight.arrival.city + "<br>")
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

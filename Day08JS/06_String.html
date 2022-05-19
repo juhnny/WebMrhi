@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String</title>
+
+    <script>
+        // 3. String( string 타입의 wrapper )
+        var a = "Hello"
+        var b = String("Hello")
+        document.write(typeof(a) + "<br>")
+        document.write(typeof(b) + "<br>")
+        document.write("<hr>")        
+
+        //유용한 기능들
+        //length
+        document.write(a.length + "<br>")        
+        document.write(b.length + "<br>")        
+        document.write("<hr>")        
+
+        //toUpperCase(), toLowerCase()
+        document.write(b.toUpperCase() + "<br>") //원본이 변경되는 게 아님!  
+        document.write(b.toLowerCase() + "<br>") //원본이 변경되는 게 아님!
+        document.write("<hr>")        
+
+        //concat()
+        var b2 = b.concat(" world") //원본이 변경되는 게 아님!
+        document.write(b2 + "<br>")        
+        document.write("<hr>")        
+
+        //indexOf()
+        document.write(b2.indexOf("o") + "<br>") //일치하는 첫 위치만 알려줌
+        document.write(b2.indexOf("wor") + "<br>") //첫 글자 기준 
+        document.write(b2.indexOf("W") + "<br>") //-1
+        document.write(b2.indexOf("word") + "<br>") //-1
+        document.write("<hr>")        
+        
+        //includes()
+        document.write(b2.includes("wor") + "<br>") //true
+        document.write(b2.includes("W") + "<br>") //false
+        document.write("<hr>")        
+
+        //match()
+        //해당하는 문자열이 있으면 그 문자열 그대로(단어가 아님) 리턴
+        var s = "Good good god GOD gold 굿 갓 골드"
+        document.write(s.match("go") + "<br>") // "go" - 매치되는 게 여럿 있어도 하나만 찾아줌
+        document.write(s.match("good") + "<br>") // "good"
+        document.write(s.match("굿") + "<br>") // "굿"
+
+        //매치되는 모든 문자열을 찾고 싶다면? 정규표현식 사용
+        document.write(s.match(/go/g) + "<br>") // go,go,go - 배열 리턴
+
+        //대소문자 구분
+        document.write(s.match("GOOD") + "<br>") //못 찾으면 null
+        document.write(s.match("gg") + "<br>") //false
+
+        //대소문자를 무시하고 찾고 싶다면? 정규표현식 사용
+        document.write(s.match(/GOOD/i) + "<br>") //"Good" - 정규표현식의 i (ignore) 사용
+
+        //대소문자 무시 + 모든 매치되는 문자열 찾기
+        document.write(s.match(/go/ig) + "<br>") 
+
+        //replace()
+        
+
+
+
+
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

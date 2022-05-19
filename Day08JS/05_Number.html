@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number 생성자 함수</title>
+    <script>
+        //Number 생성자 함수 - wrapper 클래스 같은 객체
+        var a = 10 
+        var b = new Number(10) 
+        document.write(typeof(a) + "<br>") //number
+        document.write(typeof(b) + "<br>") //object type
+
+        document.write((a == b) + "<br>")
+        document.write((a === b) + "<br>")
+        document.write("<hr>")
+
+        //유용한 기능들
+        var num = new Number(123.456)
+
+        // 1) 지수로 출력
+        document.write(num.toExponential() + "<br>")
+        document.write(num.toExponential(1) + "<br>") //소수점 아래 한 자리까지 표현
+        document.write(num.toExponential(2) + "<br>") //소수점 아래 두 자리까지 표현
+        document.write("<hr>")
+
+        // 2) 소수점 자르기
+        //반올림됨을 유의
+        document.write(num.toFixed() + "<br>") 
+        document.write(num.toFixed(2) + "<br>") //소수점 아래 두 자리까지 표현
+        document.write("<hr>")
+
+        // 3) 진법 변환 표기(string으로 반환)
+        document.write(num.toString() + "<br>") //기본은 10진법 출력
+        document.write(num.toString(16) + "<br>") //기본은 16진법 출력
+        document.write(num.toString(8) + "<br>") //기본은 8진법 출력
+        document.write(num.toString(2) + "<br>") //기본은 2진법 출력
+        document.write("<hr>")
+
+        // 수치형은 자동으로 Number 객체로 wrapping됨 - 자바의 auto boxing
+        var n = 255 //수치형 변수를 만들었을 뿐인데
+        document.write(n.toString(16) + "<br>") //Number 객체의 메소드를 갖고 있음
+
+        //수치형 상수값(리터럴)들도 자동 wrapping됨. 단!! 실수형만 가능함
+        document.write(10.12345.toFixed(2) + "<br>")
+        // document.write(10.toFixed(2) + "<br>") //정수형은 불가
+        document.write(10.0.toFixed(2) + "<br>") //10.0은 가능 ㅎㅎ
+        document.write("<hr>")
+
+        //활용 - 두 수가 특정 자리수까지 같은지 비교
+        var n1 = 3.141414
+        var n2 = 3.14
+        document.write((n1.toFixed(2) == n1.toFixed(2)) + "<br>")
+
+        //어디서 보니까 JS가 이걸 같다고 하던데..???
+        var a1 = 0.99999999
+        var a2 = 1
+        document.write((a == b) + "<br>")
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
