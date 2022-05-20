@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+    <!-- 
+        DOM(Document object model)
+        cf. BOM(Browser object model)
+
+        node: Dome tree에서 가지가 갈라지는 부분에 있는 객체들( 사실 그냥 모든 객체들 )
+        node의 종류: element node, attribute node, text node
+        node간의 관계: parent node, child note, sibling node(이 관계를 이용하는 것)
+     -->
+
+    <!--  node의 타입 확인해보기 --> 
+    <p id="p1"><a href="" target="_blank">Naver</a></p>
+    
+    <script>
+        document.write("<hr>")
+
+        //id='p1'인 p 요소
+        var e = document.getElementById("p1")
+        document.write("nodeType: " + e.nodeType + " nodeName: " + e.nodeName + " nodeValue: " + e.nodeValue +"<br>")
+        //type 1 : element node
+
+        //위 요소의 속성들 확인
+        var attrs = e.attributes
+        document.write("nodeType: " + attrs[0].nodeType + " nodeName: " + attrs[0].nodeName + " nodeValue: " + attrs[0].nodeValue +"<br>")
+        //type 2 : attribute node
+
+        //p의 자식 중 a 요소 
+        var a = e.firstChild
+        document.write("nodeType: " + a.nodeType + " nodeName: " + a.nodeName + " nodeValue: " + a.nodeValue +"<br>")
+
+        //위 요소의 속성들 확인
+        var attrs = a.attributes
+        document.write("nodeType: " + attrs[0].nodeType + " nodeName: " + attrs[0].nodeName + " nodeValue: " + attrs[0].nodeValue +"<br>")
+        //type  : attribute node
+
+        //a 요소의 첫번째 자식 노드 : text
+        var t = a.firstChild
+        document.write("nodeType: " + t.nodeType + " nodeName: " + t.nodeName + " nodeValue: " + t.nodeValue +"<br>")
+        //type 3 : text node
+
+        document.write("<hr>")
+    </script>
+
+    <!-- 자식노드 제어하기 -->
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+    </ul>
+    <ul>
+        <li>mmm</li>
+        <li>nnn</li>
+    </ul>
+
+    <script>
+        document.write("<hr>")
+
+        //li 요소 전체 개수
+        var lis = document.getElementsByTagName("li")
+        document.write(lis.length + "<br>")
+
+        var uls = document.getElementsByTagName("ul")
+        var lis = uls[0].getElementsByTagName("li") //첫번째 ul 요소의 자식 li들
+        document.write(lis.length + "<br>")
+        document.write(lis[2].firstChild.data + "<br>") //3번재 li요소의 텍스트노드 값.
+        document.write(lis[2].firstChild.nodeValue + "<br>") //3번재 li요소의 텍스트노드 값.
+        document.write(lis[2].textContent + "<br>") //3번재 li요소의 텍스트노드 값.
+
+        document.write("<hr>")
+        
+        //ul요소의 자식 중에서 첫번째 자식노드가 누구일까?
+        document.write(uls[0].firstChild.nodeName  + "<br>") //text node - 줄바꿈문자, 탭 문자, 스페이스 문자
+
+        //텍스트 노드를 제외한 요소 노드만 고르려면
+        document.write(uls[0].firstElementChild.nodeName  + "<br>") //LI
+        document.write("<hr>")
+        
+        //자식 요소 노드가 갖고 있는 텍스트 노드 값을 출력하는 두가지 방법
+        document.write(uls[0].firstElementChild.firstChild.data  + "<br>") //aaa
+        document.write(uls[0].firstElementChild.textContent  + "<br>") //aaa - 이 방법을 더 선호
+        document.write("<hr>")
+    </script>
+
+    <!-- 형제 노드 찾아 제어하기 -->
+    <div>
+        <p>Fruits List</p>
+        <ul>
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Orange</li>
+        </ul>
+    </div>
+    <hr>
+    <button onclick="funA(this)">Button</button>
+    <p></p>
+
+    <script>
+        function funA(e){
+            var divs = document.getElementsByTagName("div")
+            var div = divs[0]
+            //첫번째 p 요소를 찾기
+            var p = div.firstElementChild
+            // document.write(p  + "<br>")
+
+            //그 p 요소의 형제인 다음 ul 요소 찾기
+            var ul1 = p.nextElementSibling
+            // document.write(ul1  + "<br>")
+            // document.write(ul1.childNodes.length  + "<br>")
+            // document.write(ul1.childElementCount  + "<br>")
+            //그런데 위처럼 document.write()를 하면 기존 body에 써있던 글씨들은 다 지워지고 새로 써진다.
+
+            //body 안에 있는 어떤 노드 안에 직접 글씨를 출력해보자. 
+
+            //이벤트를 발생시킨 요소 자체(여기서는 button)를 참조하는 방법
+            //onclick()에 this를 전달한다.
+            //button 다음에 있는 p 요소에 글씨를 출력해보자
+            var p = e.nextElementSibling
+            //p는 현재 자식 텍스트 노드를 갖고 있지 않기 때문에 
+            //p.firstChild.data = "Hi" //이런 식으로 노드를 찾아서 활용할 수가 없다.
+
+            //텍스트 노드를 추가하면서 문자열을 추가하는 방법. 하지만 태그문이 파싱되진 않는다.
+            //p.textContent = "<h1> Nice to meet you </h1>" 
+             //요소까지 직접 추가하고 싶다면!
+            p.innerHTML = "<h1> Nice to meet you </h1>"
+
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <title>Array 내장 생성자 함수</title>
+    <script>
+        // Array
+        var arr = new Array(10, 20 , 30)
+
+        //주요 기능
+        document.write(arr.length + "<br>")
+        
+        //concat() - 배열 붙이기
+        var arr2 = [3, 4, 5]
+        var newArr =  arr.concat(arr2) //원본 arr은 변경되지 않는다. 단지 붙인 결과를 새로운 결과로 리턴할 뿐
+        document.write(arr + "<br>")
+        document.write(newArr + "<br>")
+
+        //indexOf - 특정 요소의 인덱스 번호 찾기
+        document.write(arr.indexOf(20) + "<br>")
+        document.write(arr.indexOf(3) + "<br>") //못 찾으면 -1 
+        document.write(arr.indexOf(20, 1) + "<br>") //특정 인덱스 이후부터 찾기
+        document.write(arr.indexOf(20, 2) + "<br>") //특정 인덱스 이후부터 찾기
+        document.write("<hr>")
+        
+        //push, pop - 배열 요소의 개수를 '변경'시키는 메소드
+        //Stack 자료구조를 만들기 위한 메소드
+        var stack = [1,2,3,4,5,6,7]
+
+        //새로운 요소 하나를 마지막에 추가(밀어넣기)
+        stack[7] = 8 //이렇게..
+        stack[stack.length] = stack.length + 1 //혹은 이렇게 인덱스를 지정해서 추가할 수도 있지만 인덱스 지정이 필요하니까 조금 불편..
+                                                //혹시나 인덱스를 잘못 쓰면 중간 인덱스에 undefined가 들어갈 수도 있고..
+        stack.push(10) //그럴 때 push를 사용
+        document.write(stack + "<br>") //1,2,3,4,5,6,7,8,9,10
+
+        //배열에서 마지막 요소를 '빼내기'
+        stack[9] //이건 마지막 요소를 읽어오는 것이지 배열이 수정되는 건 아니다.
+        stack.pop() // pop을 사용하면 배열의 길이도 수정된다.
+        document.write(stack + "<br>") //1,2,3,4,5,6,7,8,9
+        document.write(stack.pop()  + "<br>") //9
+        document.write(stack + "<br>") //1,2,3,4,5,6,7,8
+        document.write("<hr>")
+
+        // push, shift - 역시 배열 요소의 개수가 변경되는 메소드
+        // Queue 자료구조를 만들기 위한 메소드
+        var queue = [1,2,3,4,5]
+
+        queue.push(10)
+        document.write(queue + "<br>") //1,2,3,4,5,10
+        queue.shift()
+        document.write(queue + "<br>") //2,3,4,5,10
+        document.write(queue.shift() + "<br>") //2
+        document.write(queue + "<br>") //3,4,5,10
+        document.write("<hr>")
+
+        // sort - 정렬
+        // 원본 배열의 요소 위치를 변경
+        var arr = [3,1,4,9,7,5]
+        arr.sort() //오름차순 정렬됨
+        document.write(arr + "<br>") //원본이 수정됨
+
+        //두자리 수 이상일 때는 주의
+        //한 자리씩, 아스키 코드 번호를 기준으로 정렬하기 때문에 숫자도 문자열처럼 정렬해버린다.
+        var arr = [100, 15, 200, 30]
+        document.write(arr.sort() + "<br>") //사전식 정렬됨
+
+        //해결방법
+        //sort는 내부적으로 함수를 인수로 받을 수 있게 돼있다.
+        //for문으로 요소들을 차례대로 이 함수에 넣어보고 이 함수의 결과가 양수이면 요소의 앞뒤 순서를 바꾸게 돼있다.
+        //이 함수가 어떤 값을 내보낼지는 개발자 마음
+        //이 때 넣어주는 함수를 '정렬기준 함수'라고 한다.
+        arr.sort( function(a, b){ return a - b} )
+        document.write(arr + "<br>") //기본은 오름차순
+
+        arr.sort( function(a, b){ return b - a} )
+        document.write(arr + "<br>") //내림차순
+
+        //문자열 배열의 경우
+        var arr = ["ca", "ab", "aa", "ac", "dd", "cc", "bc", "bd"]
+        document.write(arr.sort() + "<br>") 
+
+        var desc = function(a, b){
+            if(a > b) return -1
+            if(b > a) return 1
+        } //내림차순 정렬. 
+        
+        //그냥 빼기론 안되나?
+
+        document.write(arr.sort(desc) + "<br>") 
+        document.write("<hr>")
+        //한글도 잘 된다고..
+
+
+        // slice - 배열의 일부분을 잘라서 새로운 배열을 리턴
+        var arr = [0, 10, 20, 30, 40, 50, 60, 70]
+        var arr2 = arr.slice(3) //3번 방의 요소부터 잘라서 리턴. 원본은 변경 없음
+        document.write(arr2 + "<br>") 
+
+        document.write(arr.slice(3, 6) + "<br>") //3번부터 6번 전까지 리턴
+        document.write("<hr>")
+
+        // join - 지정한 문자열을 구분자로 하여 요소들을 하나의 문자열로 리턴
+        var arr = [0, 10, 20, 30]
+        document.write(arr.join("and") + "<br>") //string type
+        document.write(arr.join("") + "<br>") 
+        document.write("<hr>")
+
+        // filter - 지정함수를 이용해 기준에 맞는 요소들만 뽑아서 별도의 배열로 리턴
+        var arr = [0, 1, -1, 2, 5, -10]
+        var result = arr.filter( function(e){return e > 0} ) //리턴값이 true인 요소들만 모아서 리턴
+        document.write(result + "<br>") 
+
+        //지정함수의 파라미터는 세개까지 가능
+        //파라미터의 종류는 이미 정해져 있음. 순서대로 요소, 인덱스, 배열 객체의 주소(참조값)
+        //filter() 내부적으로 for문으로 요소 개수만큼 반복됨
+        var filter = function(e, idx, array){ //좀 더 복잡한 조건도 가능.
+            return e > 0 && idx > 3 && array.length > 3 //return이 true인 요소들만 모아서 리턴
+        }
+        document.write(arr.filter(filter) + "<br>") 
+        document.write("<hr>")
+
+        // reverse - 배열의 저장순서 뒤집기. 원본배열 변경됨
+        // 게시판 글을 최신순으로 보여줄 때 같은 경우 활용
+        // var arr = ["aa", "bb", "cc"]
+        arr.reverse()
+        document.write(arr +"<br>")
+        document.write("<hr>")
+
+        //ES5부터 추가된 배열 기능들
+        var arr = [10, 20, 30, 40 , 50]
+        
+        //forEach()
+        //각각의 요소값을 접근할 때 for문을 사용하지만 실수의 여지가 있고 번거로움
+        //기존 방법1
+        for(var i = 0; i < arr.length; i++){
+            document.write(arr[i] + "/ ")
+        }
+        document.write("<br>")
+
+        // 기존 방법2
+        for(index in arr){
+            document.write(arr[index] + "/ ")
+        }
+        document.write("<br>")
+        
+        //forEach() 사용
+        //배열 객체 자신의 요소들에 순서대로 접근하여
+        //forEach()에 인수로 제공한 함수를 요소개수만큼 반복함
+        arr.forEach(function(value, index, array){
+            document.write(value + " : " + index + " out of " + array.length + "<br>")
+        })
+        document.write("<hr>")
+
+        //map()
+        // forEach()와 유사
+        // 컬렉션 map과는 관계 없음. 아마도 mapping에서 온 이름
+        // 요소의 개수만큼 전달받은 함수를 반복적으로 호출
+        // 차이점은 지정함수로부터 return을 받아 리턴값을 모아서 하나의 배열로 만들어 리턴한다는 것
+        // 길이가 5인 배열은 길이가 5인 배열을 만들게 될 것
+        var arr = [10, 20, 30, 40 , 50]
+        var result = arr.map(function(value, index, array){ //파라미터는 최대 3개
+            return value + 1
+        })
+        document.write(result + "<br>")
+        
+
+
+
+        
+
+        
+
+        
+        
+
+
+        
+        
+        
+
+
+        
+    </script>
+</html>

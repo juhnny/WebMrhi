@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 요소의 속성 변경 -->
+    <!-- img 요소의 src 속성 변경하기 -->
+    <img  id="img1" src="./image/profile.jpg" alt="profile image" width="120"><br>
+    <button onclick="changeImage()">ChangeImage</button>
+    
+    <script>
+        function changeImage(){
+            document.getElementById("img1").src = "./image/profile2.jpg"
+        }
+    </script>
+
+    <!-- DOM 구조를 이용한 요소접근방법 -->
+    <p>I'm a paragraph</p>
+    <button onclick="changeText(this)">ChangeText</button>
+    <script>
+        function changeText(e){
+            var p = e.previousElementSibling
+            p.textContent = "Changed"
+            //스타일 속성 변경하기
+            //카멜케이스임에 유의
+            p.style.color = "red"
+            p.style.backgroundColor = "yellow"
+            p.style.fontWeight = "bold"
+        }
+    </script>
+
+    <!-- 스타일 변경 시 class 속성을 이용해 일괄 적용하기 -->
+
+</body>
+</html>
