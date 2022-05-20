@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Object</title>
+    내장객체에는 두가지가 있다. 생성자 함수만 만들어져 있는 것들(정확히는 아직 객체가 아님), 아예 생성까지 돼있는 애들
+    객체의 메소드 안에서 멤버변수를 가리킬 때는 반드시 this.을 써줘야 한다. 안 쓰면 전역변수가 된다.
+    객체를 만든 방법 세가지 - 리터럴 객체, 생성자 함수, 클래스 사용
+    
+    var model 지역변수 만든 것
+    model 전역변수 만든 것
+    this.model 멤버변수 만든 것
+
+    메소드는 데이터와 달리 객체마다 존재할 필요가 없다. 
+    자바에서는 메소드가 클래스 정보 안에 저장되고(Method 영역에 저장) 객체마다 메소드를 생성하지 않는다. 
+    JS에서는 그냥 메소드를 만들면 객체마다 메소드 변수가 만들어진다. 중복이 발생
+    이를 방지하기 위해 prototype으로 만든다. static 같은 개념. 
+    prototype으로 만들면 객체마다 만들어지지 않는다.
+
     <script>
         // JS에서 사용하는 객체의 두가지 종류
         // 1. 내장객체
-        // 이미 객체로 생성돼있는 애들 - document, window, navigation, etc. ... 
-        // 생성자 함수만 만들어져 있어서 new 가 필요한 애들 - Date, String, Number, Array, ...
+        //  1) 이미 객체로 생성돼있는 애들 - document, window, navigation, etc. ... 
+        //  2) 생성자 함수만 만들어져 있어서 new 가 필요한 애들 - Date, String, Number, Array, ...
 
         // 2. 사용자정의 객체
         // 3가지 방법 - 리터럴 객체, 생성자 함수, class 키워드(이건 나중에 수업)
@@ -24,7 +38,7 @@
                 //JS에서는 객체 안에서 멤버를 참조하기 위해 반드시 this 필요
                 // document.write(name + ", " + age + "<br>") //name, age를 그냥 참조하면 에러 - Uncaught ReferenceError: age is not defined
                 document.write(this.name + ", " + this.age + "<br>")
-            },
+            }, //콤마 주의
 
             //파라미터가 있는 메소드
             add : function(a, b){
@@ -34,6 +48,7 @@
         }
         person.show()
         person.add(5, 6)
+
         //파라미터가 없는 메소드에 인수를 주면? 컴파일 에러는 아니지만 값은 무시됨. 파라미터로 뭐 할 게 없으니까..
         person.show(10)
         //파라미터가 있는 메소드에 인수를 안 주면? 파라미터가 undefined로 인식됨. undefined로 + 산술연산을 하려고 하니 NaN이라고 알려줌
@@ -42,21 +57,22 @@
         //객체에 없는 메소드를 호출하면? 실행 시 에러
         // person.substract()
         document.write("위에 에러가 있으면 안 나오는 문장 <br>")
-
         document.write("<hr>")
 
         //JS는 유연한 언어여서 심지어 객체를 생성한 후에 멤버를 추가할 수도 있음
-        person.tel = "01012341234" //property 추가
+        //property 추가
+        person.tel = "01012341234"
         document.write(person.tel + "<br>")
 
-        person.out = function(){
+        //메소드 추가
+        person.out = function(){ 
             document.write("out() ", this.name + ", " + this.age + "<br>")
         }
         person.out()
 
         //값을 대입하지 않은 property를 사용하면?
-        document.write(person.address + "<br>") //속성을 추가한 것임. 다만 값을 입력하지 않아 undefined
-        
+        document.write(person.address + "<br>") //속성을 추가한 것임. 다만 값을 입력하지 않아 undefined. 아래와 비교
+        document.write(person.address = "Busan" + "<br>") 
         document.write("<hr>")
 
         //만약 같은 모양을 가진 또 다른 Person 객체를 만들고 싶다면?
@@ -73,6 +89,7 @@
         p1.show()
 
         var p2 = Object.create(p1)
+        p2.show()
         p2.name = "Jack"
         p2.show()
 
@@ -80,7 +97,7 @@
 
         // 2) 생성자 함수 이용 - new 키워드로 객체 생성
 
-        //생성자 함수명은 파스칼 표기법이 컨벤션. 클래스처럼..
+        //생성자 함수명은 파스칼 표기법이 컨벤션. 클래스처럼.
         function Student(){
             //속성 선언(this 키워드 필요)
             this.name = "Kim"
@@ -145,7 +162,8 @@
         document.write("<hr>")
 
         //추가
-        // in 연산자
+        // in 연산자 
+        // 같은 이름의 멤버가 있는지 참거짓 알려줌
         document.write('name' in worker) //name 속성이 있으면 true
         document.write('show' in worker) //show 메소드가 있으면 true
         document.write('bbb' in worker) //show 메소드가 있으면 true

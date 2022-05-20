@@ -91,22 +91,13 @@
         document.write("<hr>")        
 
         //문자열에 HTML 요소 적용
+        document.write("<strong>" + email + "</strong>" + "<br>") //이렇게 직접 써줘도 되고
+        //메소드도 있다.
         //w3schools에서 보면 권장하진 않는다고..
-        document.write("<strong>" + email + "</strong>" + "<br>")
         document.write(email.bold() + "<br>")
-        document.write(email.a() + "<br>")
-
-
-
-
-        
-        document.write(email.bold() + "<br>")
-        document.write(email.bold() + "<br>")
-        document.write(email.bold() + "<br>")
-
-
-
-        
+        document.write(email.italics().bold() + "<br>")
+        document.write(email.fontcolor("green") + "<br>")
+        document.write(email.link("https://www.naver.com") + "<br>")
         
     </script>
 </head>
