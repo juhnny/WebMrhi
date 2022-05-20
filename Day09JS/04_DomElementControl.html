@@ -147,6 +147,18 @@
         }
     </script>
 
+    <!-- 노드들의 타입은 뭘까 -->
+    <script>
+        var h = document.querySelector("#hh4")
+        h.onclick = function aaa(){
+            //element node는?
+            alert(typeof(h)) //object
+            //text node는?
+            alert(typeof(h.firstElementChild)) //object
+            //attribute node는?
+            alert(typeof(document.createAttribute('href'))) //object
+        }
+    </script>
 
 </body>
 </html>

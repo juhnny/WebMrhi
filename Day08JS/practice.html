@@ -3,59 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Practice</title>
+    <!-- Ex4 -->
     <script>
-        // var date = new Date()
-        // var start = date.getTime()
-        // document.write(start + "<br>")
-        // var sum = 0
-        // for(var i = 0; i <= 1000000; i++){
-        //     sum += i
-        // }
-        // var end = new Date().getTime()
-        // var timeSpent = end - start
-        // document.write(sum + "<br>")
-        // document.write(end + "<br>")
-        // document.write("소요시간: " + timeSpent + "ms <br>")
-
-        // function ex04(){
-        // var date = new Date()
-        // var start = date.getTime()
-        // document.write(start + "<br>")
-        // var sum = 0
-        // for(var i = 0; i <= 1000000; i++){
-        //     sum += i
-        // }
-        // var end = new Date().getTime()
-        // var timeSpent = end - start
-        // document.write(sum + "<br>")
-        // document.write(end + "<br>")
-        // document.write("소요시간: " + timeSpent + "ms <br>")
-        // }
-        // ex04()
         
-    </script>
-    <script>
         var start = new Date().getTime()
 
         var sum = 0
         for(var i = 0; i <= 1000000; i++){
             sum += i
         }
+        document.write(new Date().getTime() - start + "ms <br>")
 
-        document.write(new Date().getTime() - start + "<br>")
+        //같은 프로그램을 function 안에 넣었더니 실행속도가 확 줄어들었다. 왜지?
+        //메모리의 Method 영역과 Stack 영역의 읽기, 쓰기 속도 차이 때문. Stack 영역이 더 빠르다.
+        //위에서 만든 sum은 전역변수로 Method 영역에 만들어지고, 아래서 만든 sum2는 지역변수로 Stack 영역에 만들어진다. 
 
-        function bbb(){
+        function ex04(){
             var start2 = new Date().getTime()
 
             var sum2 = 0
             for(var k = 0; k <= 1000000; k++){
                 sum2 += k
             }
-
-            document.write(new Date().getTime() - start2 + "<br>")
+            document.write(new Date().getTime() - start2 + "ms <br>")
         }
-        bbb()
+        ex04()
     </script>
+
+    <!-- Ex05 -->
+    
 
 </head>
 <body>
