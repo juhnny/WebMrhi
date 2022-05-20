@@ -15,12 +15,13 @@
             document.getElementById("img1").src = "./image/profile2.jpg"
         }
     </script>
+    <hr>
 
     <!-- DOM 구조를 이용한 요소접근방법 -->
-    <p>I'm a paragraph</p>
-    <button onclick="changeText(this)">ChangeText</button>
+    <p id="p1">I'm a paragraph</p>
+    <button onclick="changeButton(this)">ChangeText</button>
     <script>
-        function changeText(e){
+        function changeButton(e){
             var p = e.previousElementSibling
             p.textContent = "Changed"
             //스타일 속성 변경하기
@@ -30,8 +31,122 @@
             p.style.fontWeight = "bold"
         }
     </script>
+    <hr>
 
     <!-- 스타일 변경 시 class 속성을 이용해 일괄 적용하기 -->
+    <!-- 미리 class 선택자로 스타일을 만들어놓고, 버튼을 누르면 요소에게 class 이름표를 붙여주는 방식 -->
+    <style>
+        /* id는 한 놈한테만 줘야 하는 것이라 class를 사용  */
+        .aaa{
+            color : wheat;
+            background-color : midnightblue;
+            font-style: italic;
+            font-weight: bold;
+        }
+    </style>
+    
+    <!-- 버튼 누르면 요소에 class값 붙여주기  -->
+    <button onclick="changeStyle()">Change style</button>
+    <script>
+        function changeStyle(){
+            document.getElementById("p1").className = "aaa"
+        }
+    </script>
+    <!-- 클래스 선택자를 이용했기 때문에 위에서 p.style.color="red" 를 지정한 것처럼 inline style값을 직접 바꿨을 경우 우선순위에서 밀린다. -->
+    <hr>
+
+    <!-- DOM 노드를 동적으로 추가 및 제거 -->
+    <p class="ps"></p>
+    <button onclick="addText()">Add text node</button>
+    <button onclick="addElement()">add element node</button>
+    <button onclick="removeNode()">remove child node</button>
+
+    <script>
+        function addText(){
+            //text node 추가하기
+            // createTextNode()
+            var node = document.createTextNode("Added text")
+            //아직 어디에도 붙여지지 않은 상태
+
+            //p요소 찾기
+            var target = document.getElementsByClassName("ps")[0]
+            //노드 붙이기
+            target.appendChild(node) //append는 계속 노드를 추가하는 것
+
+            //사실 text node는 아래처럼 추가하는 게 더 보편적
+            target.textContent = "I'm also added" //append가 아니라 덮어쓰기
+        }
+
+        function addElement(){
+            //element node 추가하기
+            //createElement()
+            var node = document.createElement("a")
+            //아직 어디에도 붙여지지 않은 상태
+
+            //attribute node 생성
+            var attr = document.createAttribute("href")
+            attr.value = "https://www.naver.com"
+            node.setAttributeNode(attr) //element node에 붙이기
+
+            //text node 생성
+            var text = document.createTextNode("네이버")
+            node.appendChild(text) //element node에 붙이기
+
+            //처음에 만든 element node 붙이기
+            var target = document.getElementsByClassName("ps")[0]
+            target.appendChild(node) 
+
+            //위 작업들을 한번에 간편하게 하는 법
+            target.innerHTML = '<a href="https://www.naver.com">네이버로 가즈아</a>'
+        }
+
+        function removeNode(){
+            var target = document.getElementsByClassName("ps")[0]
+            target.removeChild(target.firstChild)
+        }
+    </script>
+    <hr>
+
+    <!-- HTML5에서 추가된 JS의 요소 찾기 기능 -->
+    <!-- 요소를 찾을 때 getElementByXXXX() 메소드가 불편해서 -->
+    <!-- CSS에서 사용하는 선택자를 이용하는 방법 -->
+    
+    <!-- 찾는 노드가 하나일 때 -->
+    <h3 id="hh1">COUNT</h3>
+    <button onclick="countClick()">Count clicks</button>
+    <script>
+        num = 0
+        function countClick(){
+            // id 선택자 # 이용
+            var h = document.querySelector("#hh1") 
+            num++
+            h.innerHTML = num
+        }
+    </script>
+
+    <!-- 찾는 노드가 여럿일 때 -->
+    <!-- 제목을 누르면 알림이 뜨도록 해보자 -->
+    <h3 id="hh2">AAA</h3>
+    <h3 id="hh3">BBB</h3>
+    <h3 id="hh4">CCC</h3>
+    
+    <script>
+        //요소 선택자
+        var hs = document.querySelectorAll("h3")
+        // onclick도 속성이므로 값 변경 가능!
+        hs[0].onclick = function(){
+            alert("clicked AAA")
+        }
+
+        hs[1].onclick = function(){
+            alert("clicked BBB")
+        }
+
+        hs[2].onclick = function(){
+            alert("clicked CCC")
+        }
+    </script>
+
 
 </body>
 </html>
