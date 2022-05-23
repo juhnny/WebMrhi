@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM</title>
+</head>
+<body>
+    <!-- BOM(Browser object model) -->
+    <!-- 1. window(JS의 최상위 객체) -->
+
+    <!-- 주요 메소드들 -->
+    <!-- 1) open, close : 새로운 웹 문서를 열고/닫기 -->
+    <button onclick="aaa()">Naver</button>
+    <script>
+        function aaa(){
+            // window.open('https://www.naver.com') //기본 target : _blank
+            // window.open('https://www.naver.com', '_self') //target 지정
+
+            // 새로운 창을 열고 싶다면 사이즈 spec을 주면 됨
+            window.open("http://www.naver.com", "_blank", "width=500, height=300, left=200, top=150")
+            //open()의 다른 파라미터는 추가로 찾아볼 것
+        }
+    </script>
+
+    <!-- 빈 윈도우 띄우기 -->
+    <button onclick="bbb()">Empty Window</button>
+    <script>
+        function bbb(){
+            // window.open() //그냥 실행하면 빈 윈도우가 띄워진다.
+            // window 객체는 최상위 객체로서 생략이 가능함
+            //새로 열린 윈도우창의 window 객체를 리턴함
+            var win = open('', '', 'width=500, height=300, left=100, top=100')
+            //새로 열린 윈도우 객체에 글씨 쓰기
+            win.document.write("<h4>I'm new!</h4>")
+            win.document.write("<p>It's a new window</p>")
+        }
+    </script>
+
+    <!-- 윈도우 닫기 -->
+    <button onclick="ccc()">Close Window</button>
+    <script>
+        function ccc(){
+            close()
+        }
+    </script>
+
+    <!-- 새로운 윈도우 열고 닫기 -->
+    <button onclick="ddd()">Open</button>
+    <button onclick="eee()">Close</button>
+    <script>
+        var win2 //전역변수로
+        function ddd(){
+            win2 = open('', '', 'width=500, height=300, left=100, top=100')
+        }
+
+        function eee(){
+            win2.close()
+        }
+    </script>
+
+    <!-- 2) moveTo, moveBy -->
+    <!-- moveTo는 절대적 위치, moveBy는 현재 위치부터 상대적인 위치로 이동 -->
+    <button onclick="ooo()">Open Window</button>
+    <button onclick="mmm()">Move Window</button>
+    <script>
+        function ooo(){
+            win3 = open('', '', 'width=300, height=300')
+            win3.document.write("오늘의 특가 상품입니다!")
+            win3.moveTo(300, 100)
+
+        }
+
+        function mmm(){
+            win3.moveBy(10, 10)
+            // 새로 열린 창이 포커스를 다시 가져가도록 하기
+            win3.focus()
+        }
+    </script>
+
+    <!-- 2.document  -->
+
+    <!-- 3. screen -->
+
+    <!-- 4.location : URL 정보. 지리적 location이 아님 -->
+
+    <!-- 5. history : 방문한 URL 기록 -->
+
+    <!-- 6. navigator : 브라우저 정보. geolocation 등 -->
+    
+</body>
+</html>
