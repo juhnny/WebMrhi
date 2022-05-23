@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>key event</title>
+    <script>
+        // 키보드 이벤트 : keypress, keydown, keyup
+        function keypressed(){
+            var keycode = window.event.keyCode //ASCII code. 아스키값이 없는 방향키 같은 키들은 keypress로 입력받지 못함
+            // keydown은 키보드 위에 있는 키의 번호를 인식. 방향키 등 모두 인식되지만 대소문자 구별은 못함. 같은 키를 누르니까.
+            document.getElementById("keycode").value = keycode
+            document.getElementById("keychar").value = String.fromCharCode(keycode)
+            document.getElementById("shiftkey").checked = event.shiftKey
+        }
+    </script>
+    <hr>
+
+    <!-- html -->
+    <!-- addEventListner() 메소드를 이용할 때의 차이점 -->
+    <!-- 함수 안에서 this 키워드가 서로 객체임 -->
+    <input onclick="aa()" type="text">
+    <script>
+        function aa(){
+            alert(this) //this는 window 객체
+        }
+    </script>
+    <hr>
+
+    <input type="text" id="in3">
+    <script>
+        // document.getElementById("in3").addEventListener("keyup", function(){
+        //     alert(this) //this는 [object HTMLInputElement] 즉 이벤트를 발생시키는 요소
+        // })
+
+        var kkk = function(){
+            // alert(this) //this는 [object HTMLInputElement] 즉 이벤트를 발생시키는 요소
+            this.value = this.value.toUpperCase()
+        }
+        document.getElementById("in3").addEventListener("keyup", kkk)
+        
+</script>
+</head>
+<body onkeypress="keypressed()">
+    <h4>아무 키나 누르세요.</h4>
+    <input type="text" id="keycode">
+    <input type="text" id="keychar">
+    <input type="checkbox" id="shiftkey">
+</body>
+</html>
