@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pratice</title>
+</head>
+<body>
+    <input onclick="aaa()" type="button" id="in1" value="Button">
+    <script>
+        function aaa(){
+            alert("aaa")
+        }
+        document.getElementById("in1").addEventListener("mousedown", aaa)
+    </script>
+    <hr>
+
+    <p id="p1">버튼을 누르면 이 내용이 변경됩니다.</p>
+    <input onclick="bbb()" type="button" id="in2" value="텍스트 변경">
+    <script>
+        function bbb(){
+            document.getElementById("p1").innerHTML = "이 텍스트는 JS로 변경한 것입니다."
+        }
+    </script>
+    <hr>
+
+    <p>숫자를 입력하세요</p>
+    <input type="text" id="in3">
+    <input type="button" id="btn1" value="입력 완료">
+    <script>
+        document.getElementById("btn1").addEventListener("click", function(){
+            var text = this.previousElementSibling.value
+            var regExp = /^[0-9]+$/
+            if(regExp.test(text)) alert("유효한 숫자입니다.")
+            else alert("숫자가 아닙니다.")
+        })
+    </script>
+    <hr>
+
+    <img id="profimage" src="profile.jpg" alt="prof1" width="200">
+    <script>
+        document.getElementById("profimage").addEventListener("click", function(){
+            if(this.alt == "prof1") {
+                this.src = "./profile2.jpg"
+                this.alt = "prof2"
+            } else if(this.alt == "prof2"){
+                this.src = "./profile.jpg"
+                this.alt = "prof1"
+            }
+        })
+    </script>
+    <hr>
+
+    <h2>회원 신청서</h2>
+    <div id="applyform">
+        <legend for="name">이름*</legend>
+        <input type="text" name="name">  
+        <legend for="sex">성별*</legend>  
+        <input type="radio" name="sex" value="male">남성 
+        <input type="radio" name="sex" value="female">여성
+        <legend for="phone">휴대폰*</legend>  
+        <input type="text" name="phone">
+        <legend for="email">이메일*</legend>  
+        <input type="text" name="email">
+        <legend for="pw">패스워드(6-8글자)*</legend>  
+        <input type="text" name="pw">
+        <legend for="pw2">패스워드 확인*</legend>  
+        <input type="text" name="pw2">
+
+        <input type="submit" name="submit" value="제출">
+        <input type="reset" name="reset" value="지우기">
+        <p id="advice">결과</p>
+    </div>
+    <style>
+        #applyform legend, input{
+            display: inline-block;
+            width: 120px;
+        }
+    </style>
+    <script>
+        advice = document.getElementById("advice")
+
+        document.getElementsByName("submit")[0].addEventListener("click", function(){
+            var name = document.getElementsByName("name")[0].value
+            var sex = document.getElementsByName("sex")[0].value //이걸 값을 어떻게 받아야 하지? 이렇게 하면 앞에 있는 값만 오는데....
+            var phone = document.getElementsByName("phone")[0].value
+            var email = document.getElementsByName("email")[0].value
+            var pw = document.getElementsByName("pw")[0].value
+            var pw2 = document.getElementsByName("pw2")[0].value
+
+            if(!checkName(name)) return 
+            if(!checkPhone(phone)) return
+            if(!checkEmail(email)) return
+            if(!checkPw(pw)) return
+            if(!checkPwEqual(pw, pw2)) return
+            
+            advice.innerHTML = "유효성 검사 통과!"
+        })
+        
+        function checkName(name){
+            var regExp = /^[a-zA-Z]+$/
+            if(regExp.test(name)) {
+                advice.innerHTML = "성공"
+                return true
+            } else {
+                advice.innerHTML = "이름이 이상해요."
+                return false
+            }
+        }
+
+        function checkPhone(phone){
+            var regExp = /^[0-9]{2,4}-[0-9]{3,4}-[0-9]{3,4}$/
+            if(regExp.test(phone)) {
+                advice.innerHTML = "성공"
+                return true
+            } else {
+                advice.innerHTML = "전화번호 이상해요."
+                return false
+            }
+        }
+
+        function checkEmail(email){
+            var regExp = /^[a-zA-Z0-9!@#$%^&*()-]+@[a-z]+.[a-z]*$/
+            if(regExp.test(email)) {
+                advice.innerHTML = "성공"
+                return true
+            } else {
+                advice.innerHTML = "이메일이 이상해요."
+                return false
+            }
+        }
+
+        function checkPw(pw){
+            var regExp = /^\w{8,}$/
+            if(regExp.test(pw)) {
+                advice.innerHTML = "성공"
+                return true
+            } else {
+                advice.innerHTML = "비번 이상해요."
+                return false
+            }
+        }
+
+        function checkPwEqual(pw1, pw2){
+            if(!checkPw(pw2)){
+                advice.innerHTML = "검증용 비번이 이상해요"
+                return false
+            }
+
+            if(pw1 == p2){
+                advice.innerHTML = "성공"
+                return true
+            } else {
+                advice.innerHTML = "비번이 일치하지 않아요."
+                return false
+            }
+
+        }
+    </script>
+</body>
+</html>
