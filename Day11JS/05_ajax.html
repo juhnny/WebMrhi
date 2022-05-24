@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+
+    <script>
+        // AJAX(Asynchronous JavaScript And XML)
+        // AJAX 기술은 서버환경에서만 구독. 즉, HTTP 주소환경에서 구동됨.
+        function aaa(){
+            //네트워크 통신을 수행하는 객체 생성. 마치 안드로이드의 HttpUrlConnection과 같은 역할
+            var xhr = new XMLHttpRequest() //내장 생성자 함수
+
+            //서버로부터 응답을 받으면 자동으로 발동하는 함수를 지정
+            //send()보다 먼저 작성돼야 함
+            xhr.onreadystatechange = function(){
+                //통신을 시작하면 서버로부터 총 5번 응답을 받는다. 
+                //서버의 상태변화를 readyState를 나타내는 숫자로 전달받는다.
+                //readystate는 서버가 요청 받았을 때, 데이터 받았을 떄, 작업 들어갈 떄, 작업 끝났을 때, 응답 보냈을 떄 바뀐다.
+                //거기에 더해 각각 상태가 어떤지를 status로 알려준다. 200 응답, 404 에러 등등이 그것
+                //다른 상태변화보다 중요한 게 응답 보냈을 떄를 알려주는 4번 상태
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    
+                }
+                
+
+            }
+            // xhr.open('GET', './aaa.txt', true)
+            xhr.open("GET", "./05_getTest.php?title=Hello&msg=Nice to meet you", true)
+            // 파라미터는 각각 요청 방식, 열 파일, Asynchronous 여부(false로 하면 동기화. 네트워크가 끝날 때까지 버튼이 안 먹는다.)
+            xhr.send() //통신 시작
+        }
+
+        function bbb(){
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange(function(){
+                if(xhr.readyState == 4 && xhr.status==200)
+                document.getElementById("ta").innerHTML = xhr.responseText
+            })
+
+            xhr.open("POST", "./05_postTest.php", true)
+            xhr.setRequestHeader('Content-type', "application/x-www-form-urlencoded") //body에 실린 데이터가 form에서 사용하는 map 방식으로 돼있다는 걸 알려주는 말
+            xhr.send("id=abcd&pw=1234") //body값
+
+        }
+    </script>
+</head>
+<body>
+    <!-- 서버와의 통신을 form 요소 말고 JS를 이용해 데이터만 주고받기 -->
+    <p>
+        <button onclick="aaa()">GET METHOD</button>
+        <button onclick="bbb()">POST METHOD</button>
+    </p>
+
+    <textarea id="ta" cols="30" rows="3"></textarea>
+</body>
+</html>

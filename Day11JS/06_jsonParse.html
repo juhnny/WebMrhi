@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+</head>
+<body>
+    <h3 id="target"></h3>
+    <button onclick="aaa()">JSON ojbect 변환</button>
+    <button onclick="bbb()">JSON array 변환</button>
+
+    <script>
+        function aaa(){
+            //json object 파싱 연습
+            var jo= '{"name":"Sam", "age": 16}'
+
+            //json 문자열을 객체로 변환
+            var person = JSON.parse(jo)
+
+            document.getElementById("target").innerHTML = person.name + ", " + person.age
+        }
+
+        function bbb(){
+            //json array를 배열 객체로 변환
+            var ja= '[' + 
+            '{"name":"Kim", "age": 20},'+
+            '{"name":"Sam", "age": 16},'+
+            '{"name":"Sam", "age": 16}' +
+            ']'
+
+            var people = JSON.parse(ja) //people은 배열
+            var s = ""
+            for(var i = 0; i < people.length; i++){
+                s += people[i].name + " : " + people[i].age + "<br>"
+            }
+            document.getElementById("target").innerHTML = s
+        }
+    </script>
+
+    <!-- JS의 객체를 JSON 문자열로 변환 -->
+    <button onclick="ccc()">object to Json</button>
+    <button onclick="ddd()">array to Json</button>
+
+    <script>
+        function ccc(){
+            //JS 객체
+            var person = {
+                name : "Sam",
+                age:20
+            }
+
+            //object to json
+            var json = JSON.stringify(person)
+            document.getElementById("target").innerHTML = json
+        }
+
+        function ddd(){
+            var objArray = [
+                {name: "Sam", age:20, address: {nation: "Korea", city: "Seoul"}}, 
+                {name: "Paak", age:25, address: {nation: "USA", city: "LA"}}
+            ]
+
+            var json = JSON.stringify(objArray)
+            document.getElementById("target").innerHTML = json
+        }
+    </script>
+
+
+</body>
+</html>
