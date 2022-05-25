@@ -8,7 +8,7 @@
     <!-- 테스트하려면 dothome이나 github 사이트의 정적웹사이트 호스팅 기능 사용 : pages -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb861c4a6dc8276bbac21db59ae2473a"></script>
     <script>
-            function loaded(){
+        function loaded(){
             var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
             var options = { //지도를 생성할 때 필요한 기본 옵션
                 center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
@@ -20,9 +20,37 @@
     </script>
 </head>
 <body onload="loaded()">
-    <!-- 지도가 보여질 영역 요소: 사이즈 지정이 없으면 안 보이니 필수 -->
+    <!-- 지도가 보여질 영역 요소: 사이즈 지정이 없으면 지도가 안 보이니 필수 -->
     <div id="map" style="width:500px;height:400px;"></div>
 
+    <div id="map2" style="width:100%;height:350px;"></div>
+
+    <script>
+        var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
+            mapOption = { 
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+        
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+        
+        // 마커가 표시될 위치입니다 
+        var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+        
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+        
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+        
+        // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+        // marker.setMap(null);    
+    </script>
+
+    <!-- 이외에도 다양한 샘플을 친절하게 제공하고 있으니 참고 -->
+    <!-- https://apis.map.kakao.com/web/sample/ -->
 
 </body>
 </html>

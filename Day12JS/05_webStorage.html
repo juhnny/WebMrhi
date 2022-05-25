@@ -18,19 +18,6 @@
     만료시기를 지정할 수 있다. 
     쿠키보다 보안이 향상된 기능
 
-    
-    쿠키, 세션과 비슷하지만 클라이언트단에서 사용 가능한 기능
-
-    localStorage 객체
-    만료날짜가 없는 데이터를 저장
-    도메인이 다르면 서로의 로컬 스토리지에 접근할 수 없음
-    쿠키와 비슷하지만 보안이 강화됨
-
-    sessionStorage 객체
-    각 세션(하나의 윈도우)마다 데이터가 별도로 저장됨
-    해당 세션이 종료되면 데이터가 사라진다.
-
-
     <!-- local storage 내용 보여줄 곳 -->
     <h3 id="aa"></h3>
     <hr>
@@ -39,12 +26,14 @@
     <hr>
 
     <script>
-        //웹 스토리지 : 웹문서(html)을 열면 client의 컴퓨터에 데이터를 저장할 수 있는 기법(일종의 쿠키)
-        // 백엔드에 있는 쿠키와 비슷한 기술
+        // 웹 스토리지 - 웹문서(html)을 열면 client의 컴퓨터에 데이터를 저장할 수 있는 기법(일종의 쿠키)
+        // 백엔드에 있는 쿠키와 비슷하지만 클라이언트단에서 사용 가능한 기능. 
+        // 같은 도메인(같은 www.aaa.com)은 같은 저장소 공유. 다른 도메인간에는 불가
+        // 쿠키보다 보안면에서 낫다. 쿠키는 어느 도메인에서나 그냥 접근 가능
         // 쿠키는 용량이 4kb로 고정, web storage는 5mb까지 가능
+        // 만료날짜가 없음
         
         // 1. localStorage
-        //같은 도메인(같은 www.aaa.com)은 같은 저장소 공유. 다른 도메인간에는 불가(쿠키는 어느 도메인에서나 그냥 접근 가능)
         //브라우저가 닫히더라도 데이터 보존
 
         //예) 페이지 방문 횟수 저장
@@ -52,11 +41,11 @@
             localStorage.cnt = 0 //이러면 새로운 cnt 변수가 생기면서 저장됨
         }
         localStorage.cnt = parseInt(localStorage.cnt) + 1 //모든 localStorage 데이터는 string으로 저장됨
-
         document.getElementById("aa").innerHTML = localStorage.cnt + '번째 방문입니다.'
+
         // 2. sessionStorage - 
-        //같은 도메인(같은 www.aaa.com)은 같은 저장소 공유. 다른 도메인간에는 불가
-        //브라우저가 닫히면 데이터 소실됨
+        // 각 세션(하나의 윈도우(탭은 제외?))마다 데이터가 별도로 저장됨
+        // 해당 세션이 종료되면 데이터가 사라진다.
         if( ! sessionStorage.cnt ){
             sessionStorage.cnt = 0
         }   
@@ -72,6 +61,9 @@
     <label>비밀번호 : <input type="password" id="in02"></label><br>
     <label><input type="checkbox" id="cb">아이디 저장</label><br>
     <button onclick="login()">로그인</button>
+    <!-- 로그인 버튼까지 누르고 나서 이 값이 언제까지 저장되는지 비교해보자 -->
+    <!-- 아이디 저장을 선택해서 localStorage를 사용했을 때는 그 페이지를 닫았다가 다시 열어도 값 저장돼있음 -->
+    <!-- sessionStorage를 사용했을 때는 페이지를 닫았다가 열면 값 사라짐 -->
 
     <script>
         function login(){
@@ -84,7 +76,7 @@
                 localStorage.setItem("pw", pw)
                 localStorage.setItem("cv", true) //한번'id 저장'을 체크해두면 다음에도 체크돼있게 하기 위해
 
-                sessionStorage.clear() //기존 모든 데이터 삭제
+                sessionStorage.clear() //기존 sessionStorage 데이터는 모두 삭제
 
             } else { //sessionStorage 저장 - 브라우저가 닫히면 소멸
                 sessionStorage.setItem("id", id)
@@ -92,7 +84,7 @@
                 sessionStorage.setItem("cv", false)
 
                 // localStorage.removeItem("id")
-                localStorage.clear() //모든 데이터 삭제
+                localStorage.clear() //기존 localStorage 데이터는 모두 삭제
             }
         }
 
@@ -108,9 +100,7 @@
                     document.getElementById("in01").value = sessionStorage.getItem("id")
                     document.getElementById("in02").value = sessionStorage.getItem("pw")
                 }
-
             }
-            
         }
 
         loadLoginInfo()

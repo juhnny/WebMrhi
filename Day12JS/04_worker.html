@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Web Worker</title>
+    <!-- Web worker : JS의 Thread(별도의 작업자) -->
+    <!-- 기본적으로 JS는 싱글스레드 언어 -->
+
     <script>
         function clickBtn(){
             // 별도의 스레드를 사용하지 않고 메인 스레드에게 오~래 걸리는 작업을 시켜보자.
@@ -26,7 +29,7 @@
             //worker는 로컬에서는 실행 안되고 웹서버에서만 동작
             //일부 브라우저는 로컬에서도 동작을 지원하기도 함
             if(worker == undefined){
-                worker = new Worker('./worker.js') //워커가 할 일은 별도의 js 문서에 작성
+                worker = new Worker('./worker.js') //워커가 할 일은 별도의 js 문서에 작성. 괄호 안에 곧바로 작성할 수는 없다.
             } else {
                 alert("worker가 이미 존재해요")
             }
@@ -50,17 +53,14 @@
     </script>
 </head>
 <body>
-    <!-- Web worker : JS의 Thread(별도의 작업자) -->
-    <button onclick="clickBtn()">무한 반복</button>
-    <br>
+    <!-- 그냥 메인스레드로 오래걸리는 작업을 할 때 -->
     <h2 id="hh">RESULT : </h2>
-    <br>
-    <button>Button</button>
+    <button onclick="clickBtn()">무한 반복</button><br><br>
+    <button>메인스레드가 멈추면 안 움직이는 버튼</button>
     <hr>
     <!-- 웹 워커를 이용해 메인 스레드와 별도의 작업을 수행하도록 해보자 -->
     <button onclick="clickBtn2()">Start worker</button>
     <button onclick="clickBtn3()">Stop worker</button>
-    
     
 </body>
 </html>
