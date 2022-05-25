@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+    <style>
+        #cart {
+            width: 400px;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid tomato;
+        }
+    </style>
+    <script>
+
+        //start, end, over(이것도)는 드래그되고 있는 대상에게 발생, 나머지는 그 밑에 있는 대상에게 발생
+
+        var id //드래그되는 요소의 id를 저장하는 변수
+        var overTarget = false //드래그되는 요소가 타겟요소 위에 있는가?
+
+        function dragstart(){
+            id = window.event.target.id
+        }
+
+        function dragenter(){
+
+        }
+
+        function dragover(){
+            overTarget = true
+            //기본적으로 브라우저에 렌더링된 요소들은 드래그는 가능하지만 드랍은 막아져 있음
+            //이 기본설정을 거부해야 함
+            event.preventDefault()
+
+        }
+
+        function dragdrop(){
+
+        }
+
+        function dragleave(){
+            overTarget = false
+
+        }
+
+        function dragend(){
+            if(overTarget){
+                //드래그되는 요소를 찾아오기
+                var e = document.getElementById(id)
+                document.getElementById("cart").appendChild(e)
+
+                overTarget = false
+            }
+
+        }
+    </script>
+    
+</head>
+<body>
+    <div id="cart" ondragover="dragover()" ondrop="dragdrop()" ondragenter="dragenter()" ondragleave="dragleave()"></div>
+    <img src="./image/storm.jpg" alt="" width="150" id="img1" ondragstart="dragstart()" ondragend="dragend()">
+    <img src="./image/sunshine.jpg" alt="" width="150" id="img2" ondragstart="dragstart()" ondragend="dragend()">
+    
+</body>
+</html>

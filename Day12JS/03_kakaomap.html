@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kakao map</title>
+    <!-- developers.kakao.com 참고 -->
+    <!-- 카카오 애플리케이션 Web플랫폼 정보 등록 시 웹사이트 도메인(host 주소)을 요구 -> 웹서버에 업로드해야만 테스트/사용 가능 -->
+    <!-- 테스트하려면 dothome이나 github 사이트의 정적웹사이트 호스팅 기능 사용 : pages -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb861c4a6dc8276bbac21db59ae2473a"></script>
+    <script>
+            function loaded(){
+            var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+            var options = { //지도를 생성할 때 필요한 기본 옵션
+                center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+                level: 3 //지도의 레벨(확대, 축소 정도)
+            };
+
+            var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+        }
+    </script>
+</head>
+<body onload="loaded()">
+    <!-- 지도가 보여질 영역 요소: 사이즈 지정이 없으면 안 보이니 필수 -->
+    <div id="map" style="width:500px;height:400px;"></div>
+
+
+</body>
+</html>

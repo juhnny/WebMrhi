@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>Bootstrap</title>
+        <!-- 부트스트랩 라이브러리 적용 -->
+        <!-- getbootstrap.com -->
+
+        <!-- 1. 다운로드 방식 -->
+        <!-- 하이브리드앱 만들 때 선호. 인터넷 연결 없이도 동작해야 해서 -->
+        <link rel="stylesheet" href="./css/bootstrap.css">
+        <script src="./js/bootstrap.js"></script>
+
+        <!-- 2. CDN 방식 -->
+
+    </head>
+    <body>
+        <button class="btn btn-primary">BUTTON</button>
+        <!-- container라는 클래스도 붓스트랩에 정의돼있음 -->
+        <div class="container">
+            <button class="btn btn-secondary">BUTTON</button>
+            <button class="btn btn-success">BUTTON</button>
+            <button class="btn btn-danger">BUTTON</button>
+            <button class="btn btn-warning">BUTTON</button>
+        </div>
+
+        <!-- 가장 많이 사용되는 스타일 - 게시판 만들 때 사용하는 스타일 -->
+        <!-- mt는 margin-top, ml은 margin-left 같은 방식. 숫자는 1-5까지 있음 -->
+        <table class="table table-hover mt-3"> 
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>msg</th>
+                <th>date</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>hey</td>
+                <td>2022/5/5</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>kim</td>
+                <td>nice</td>
+                <td>2022/5/10</td>
+            </tr>
+        </table>
+
+        <!-- 게시판의 페이지번호 표시 pagenation -->
+        <!-- pagination은 flex layout을 사용하고 있음 -->
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="">1</a></li>
+            <li class="page-item"><a  class="page-link" href="">2</a></li>
+            <li class="page-item"><a  class="page-link" href="">3</a></li>
+            <li class="page-item"><a  class="page-link" href="">4</a></li>
+            <li class="page-item"><a  class="page-link" href="">5</a></li>
+        </ul>
+
+        <!-- 쇼핑몰 같은 곳에서 많이 쓰이는 card 레이아웃 -->
+        <div class="card" style="width: 18rem;">
+            <img src="../Day12JS/image/storm.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+    </body>
+
+</html>

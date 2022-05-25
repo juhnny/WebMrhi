@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Worker</title>
+    <script>
+        function clickBtn(){
+            // 별도의 스레드를 사용하지 않고 메인 스레드에게 오~래 걸리는 작업을 시켜보자.
+            var n = 0
+            while(true){
+                n++
+                document.getElementById("hh").innerHTML = n
+                //이러면 화면에 n이 찍힐까?
+                //아무런 변화도 없다. 그러다가 Out of Memory 에러 발생. 왜?
+                //화면을 그려내려면 rendering()이라는 함수가 실행돼야 하는데 반복문이 도느라 clickBtn()이 안 끝났으니 렌더링조차 안됨
+                //심지어 버튼이 눌린 상태로 튀어나오지도 못함 -> 흔히 말하는 렉 걸린 상태 
+                //그래서 일정 시간 뒤에 함수를 실행하려면 setTimeOut, 반복적으로 실행하려면 setInterval을 쓰는 것
+            }
+        }
+
+        var worker //전역변수
+
+        function clickBtn2(){
+            //Worker 객체 생성
+            //start 할 필요 없이 객체 생성만 하면 자동 start
+            //worker는 로컬에서는 실행 안되고 웹서버에서만 동작
+            //일부 브라우저는 로컬에서도 동작을 지원하기도 함
+            if(worker == undefined){
+                worker = new Worker('./worker.js') //워커가 할 일은 별도의 js 문서에 작성
+            } else {
+                alert("worker가 이미 존재해요")
+            }
+
+            //worker의 실행문 안에서 postMessage()를 통해 데이터를 전달하면 자동으로 실행될 콜백함수를 지정한다.
+            // message가 올 때마다 onmessage에 저장된 함수가 동작
+            worker.onmessage = function(event){ //데이터를 가진 event 객체가 전달됨.
+                document.getElementById("hh").innerHTML = event.data
+            }
+            
+        }
+
+        function clickBtn3(){
+            worker.terminate()
+            worker = undefined //worker를 같은 이름으로 계속 만들 수도 있는 상황. 연결이 끊어진 객체들은 제어를 못하게 되므로 위험. 
+        }
+
+        //프론트엔드에서는 비동기처리가 되는 기능들을 쓰면 되기 때문에 별도 스레드를 거의 쓸 일이 없지만,
+        //백엔드에서는 쓰는 경우가 있고,
+        //나중에 PWA 앱을 만들 때는 worker가 필수가 된다.
+    </script>
+</head>
+<body>
+    <!-- Web worker : JS의 Thread(별도의 작업자) -->
+    <button onclick="clickBtn()">무한 반복</button>
+    <br>
+    <h2 id="hh">RESULT : </h2>
+    <br>
+    <button>Button</button>
+    <hr>
+    <!-- 웹 워커를 이용해 메인 스레드와 별도의 작업을 수행하도록 해보자 -->
+    <button onclick="clickBtn2()">Start worker</button>
+    <button onclick="clickBtn3()">Stop worker</button>
+    
+    
+</body>
+</html>
