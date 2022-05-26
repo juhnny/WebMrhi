@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>class 키워드</title>
+    </head>
+    <body>
+        <script>
+            // class 키워드 - 객체를 설명하는 새로운 방법
+            
+            // 기존 JS의 객체생성 2가지 방법
+            // 1. literal 객체 : 객체를 설계와 동시에 생성
+            // 단점은 재사용이 어렵다는 것
+            var h = {
+                name:"Sam",
+                age:20,
+                show:function(){
+                    document.write(this.name + " : " + this.age + "<br>")
+                }
+            }
+            h.name = "Kim"
+            h.age = 10
+            h.show()
+
+            // 2. 생성자 함수 사용
+            function Human(name, age){
+                this.name = name
+                this.age = age
+                this.show = function(){
+                    document.write(name + " : " + age + "<br>")
+                }
+            }
+            var h = new Human("Park", 30)
+            h.show()
+
+            h.name = "Lee" //이건 왜 무시될까? 이렇게 못 바꾸나??
+            h.age = 40
+            h.show()
+
+            // class 키워드
+            // 멤버에 this.을 안써도 되고 아무런 키워드 없이 그냥 변수명만 쓰면 됨
+            class Person{
+                //아무런 키워드 없이 그냥 변수명만 쓰면 멤버. 전역변수가 아님!
+                //this.을 쓰면 에러
+                //this.aaa = 10
+                // 사실 어떤 키워드를 써도 에러
+                // function 키워드조차 에러
+                // var bbb = 10
+                // let ccc = 10
+                // const ddd = 10
+                name = "John"
+                age = 20
+                
+                //다른 방법으로 멤버변수 만드는 방법
+                //생성자 함수 안에 변수를 만드는 방법
+                //
+                constructor(){
+                    // addressG = "Somewhere on Earth" //메소드 안에서는 키워드 없이 변수를 만들면 전역변수가 됨! 아예 에런데?
+                    this.address = "Busan"
+                }
+                //위 두가지 방법 중 편한 방법으로 멤버를 만들면 된다.
+
+                //메소드(멤버 함수)를 만들 때는 function 키워드 없이 써야 함
+                show(){
+                    document.write("show() " + this.name + " : " + this.age + " : " + this.address + "<br>")
+                }
+
+                output = function(){
+                    document.write("output() " + this.name + " : " + this.age + " : " + this.address + "<br>")
+                }
+            }
+            var p = new Person()
+            document.write(p.name + " : " + p.age + " : " + p.address + "<br>")
+            p.show()
+            p.output()
+        </script>
+        <hr>
+        <script>
+            //여기는 다른 스크립트 문서. 과연 위에서 만든 Person class를 인식할 수 있을까?
+            const p2 = new Person()
+            p2.show()
+
+            //class 생성자 함수에 파라미터 사용하기
+            class Memeber{
+                constructor(id, pw){
+                    //생성자 오버로딩 기능이 없다. 파라미터 개수에 따라 다르게 처리하려면 조건문으로 처리
+                    if(id == undefined) this.id = "default ID"
+                    else this.id = id
+                    if(pw == undefined) this.pw = "default PW"
+                    else this.pw = pw
+                }
+                
+                //생성자 함수 오버로딩이 가능할까? - fatal error 발생. 이 script문 전체가 나오지 않는다.
+                //생성자 오버로딩 기능이 없다. 
+                //위에서 만든 하나의 생성자 함수 내에서 조건문으로 처리해줘야 한다.
+                // constructor(){
+                //     this.id = "default ID"
+                //     this.pw = "default PW"
+                // }
+
+                show(){
+                    "Member show() " + this.id +"/"+ this.pw +"<br>"
+                }
+
+                //일반 메소드에도 오버로딩은 없다. 그냥 덮어쓰기 된다.
+                show(a){
+                    document.write("Member show(a) " + this.id +"/"+ this.pw +"<br>")
+                }
+
+                //리턴값이 있는 메소드
+                add(x, y){
+                    return x + y
+                }
+
+                //밖에서 만든 선언적 함수로 멤버함수를 만드는 방법
+                display = aaa
+            }
+
+            let m = new Memeber() //인수를 안 주면 undefined
+            m.show()
+
+            m = new Memeber("abc111", "1q2w3e")
+            m.show()
+            m.show(10)
+            document.write("add() " + m.add(2, 3) + "<br>")
+
+            //class 밖에서 만든 선언적 함수
+            //선언적 함수는 script문 안 어디서도(함수보다 윗줄에서도), 이후에 오는 모든 script문에서도 인식 가능
+            function aaa(){
+                document.write("aaa() ID: " + this.id + "<br>")
+            }
+            m.display()
+        </script>
+        <hr>
+        <script>
+            // 클래스의 상속
+
+            //부모 클래스
+            class Anyone{
+                constructor(name, age){
+                    this.name = name
+                    this.age = age
+                }
+                show(){
+                    document.write("Anyone show() " + this.name + ":" + this.age + "<br>")
+                }
+            }
+            var anyone = new Anyone("Any", 10)
+            anyone.show()
+            
+            //상속 받기
+            class Student extends Anyone{
+                constructor(name, age, major){
+                    //JS의 자식생성자 함수안에서 반드시 명시적으로 부모생성자를 호출해야함. 파라미터를 전달 하든 안하든 반드시.
+                    // this.name = name //Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+                    // this.age = age
+                    super(name, age)
+
+                    this.major = major
+                }
+
+                //오버라이딩
+                //상속받은 메소드 수정하기
+                show(){
+                    super.show()
+                    document.write(this.major + "<br>")
+                }
+            }
+            const stu1 = new Student("Sim", 20, "Math")
+            stu1.show()
+        </script>
+        <hr>
+        <script>
+            // 객체 생성없이 존재하는 멤버. static 멤버
+            class First{
+                constructor(){
+                    // static this.name="sam" //static 키워드는 함수안에서 사용불가
+                }
+
+                static name = 10
+                
+                static show(){
+                    document.write("static show() <br>")
+                }
+            }
+
+            //static 멤버는 객체생성없이 클래스명.xxx()로 호출
+            document.write(First.a + "<br>")
+            First.show()
+
+            // Java와 다른점. 객체를 생성하고 객체참조변수로는 static멤버사용불가
+            const first = new First()
+            document.write("name: " + first.name +"<br>") //ss객체에 새로운 멤버변수 name을 만들것이 되어버림
+        </script>
+        <hr>
+        <script>
+            //객체 생성 후 class에 없던 멤버 추가 가능
+            class Empty{}
+            const empty = new Empty()
+            empty.a = 20 //프로퍼티 추가
+            empty.show = function(){ document.write("Empty show() a: " + empty.a + "<br>") } //메소드 추가
+            empty.show()
+        </script>
+        <hr>
+        <script>
+            //구조분해할당 Destructuring Assignment
+            //함수에 객체의 멤버를 인자로 전달할 때 매우 편리
+            class Robot{
+                constructor(){
+                    this.name = "John"
+                    this.age = 0
+                    this.address = "Factory1"
+                }
+            }
+            //멤버들을 출력하려면 원래는 객체명. 을 써서 불러와야 한다.
+            const robot = new Robot()
+            document.write(robot.name + "/" + robot.age + "/" + robot.address + "<br>")
+            //하지만 robot., robot., robot. ... 계속 하는 것조차 여러번 부르려면 귀찮다.
+
+            //하지만 멤버값을 불러와서 다른 변수에 대입하면 다음부터는 사용하기 편해진다.
+            // let name =  robot.name
+            // let age = robot.age
+            // let address = robot.address
+
+            //하지만 어차피 여기서 Robot 객체가 robot 하나 뿐이라면, 이것조차 안 쓰면 좋잖아
+            //여기서 쓰는 게 구조분해 할당
+            // 중괄호 안에 할당된 객체에서 빼낼 멤버의 이름을 적는다.
+            // 구조분해 할당 중괄호는 무엇을 리턴?
+            let {name, age} = robot //객체의 멤버 중 name, age만 빼서 일반 변수에 할당
+            document.write(name + "/" + age + "/" + "<br>")
+            let {major} = robot //객체에 없는 멤버를 쓰려 하면? 
+            document.write(name + "/" + major + "/" + "<br>") //major 변수는 만들어졌지만 undefined
+
+            //Robot 객체의 멤버값을 출력해주는 기능 함수
+            //인자로 전달된 객체에서 멤버만 뽑아와 변수로 사용
+            function showValues({name, age, address}){ //파라미터의 갯수는 객체 하나임
+                document.write("showValues() " + name + "/" + age + "/" + address + "<br>")
+            }
+            showValues(robot)
+
+            //특이한 구조분해 할당
+            //특정 멤버를 제외한 나머지 멤버들을 하나의 객체로 할당받기
+            class Every{
+                x = 11
+                y = 22
+                z = 33
+            }
+            const every = new Every()
+            let {x, ...rest} = every //rest는 x를 제외한 멤버를 포함
+            document.write(x + "<br>")
+            document.write(rest.x + "<br>") //undefined
+            document.write(rest.y + "<br>")
+            document.write(rest.z + "<br>")
+
+        </script>
+    </body>
+</html>
