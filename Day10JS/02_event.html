@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // JS에서 이벤트를 처리하는 세 가지 방법
+        // 1. html 요소에 속성값으로 콜백함수 지정 <button onclick="aaa()">
+        // 2. JS에서 요소를 찾아와서 이벤트 콜백 속성에 함수 지정 - 이쪽을 더 자주 쓴다.
+        // 3. 요소의 특정 이벤트리스너를 추가하는 메소드를 통해 처리
+
+        // onload 이벤트 - 문서의 로드가 모두 완료되면 발동하는 이벤트
+        document.getElementById("aa").innerHTML = "Hello"
+        //이렇게 쓰면 "aa"를 찾지 못한다. 왜?
+        //head 영역이 끝나기 전까지는 body에 요소들이 만들어지지 않기 때문에 id="aa"인 요소가 아직 없다!
+        //getElementById 같은 메소드들은 body의 요소들이 만들어진 뒤에만 사용 가능
+        //즉 버튼을 클릭해서 발동하는 식으로 body보다 나중에 실행되어야 함
+        //body()의 onload 속성을 사용하면 편리함
+
+        function loaded(){
+            document.getElementById("aa").innerHTML = "Hello"
+            
+            //2. onclick 이벤트를 자바스크립트에서 처리하기
+            document.getElementById("aa").onclick = function(){
+                // alert("clicked!")
+                document.getElementById("aa").innerHTML += " clicked" //클릭하면 문자열이 화면에 추가됨
+            }
+
+            //doubleclick 이벤트 처리하기
+            // document.getElementById("aa").ondblclick = function(){
+            //     alert("double clicked!")
+            // }
+
+            // 3. 요소에 이벤트 리스너 추가하는 메소드
+            // 어느 이벤트가 발생할 때 어느 함수를 실행할 지
+            document.getElementById("aa").addEventListener('dblclick', function(){
+                document.getElementById("aa").innerHTML += " dblclicked" //더블클릭하면 문자열이 화면에 추가됨
+            })
+        }
+    </script>
+</head>
+<body onload="loaded()">
+    <!-- 1) 이벤트 핸들러 적용 연습(onLoad 이벤트) -->
+    <h2 id="aa"></h2>
+
+    <!-- 2) input 요소의 입력필드값 변경 이벤트-->
+    <input type="text" id="in1" onfocus="bbb()" onchange="ddd()">
+    <input type="text" id="in2" onblur="ccc()"> 
+    <script>
+        function bbb(){
+            document.getElementById("in1").value = "Focused"
+        }
+
+        function ccc(){
+            document.getElementById("in2").value = "Lost focus"
+        }
+
+        //onchange는 값이 바뀌었을 때만 발동
+        function ddd(){
+            alert("Value changed")
+        }
+    </script>
+    <hr>
+
+    <!-- 예시) 입력 요소에 값을 입력하고 필드를 벗어나면 자동으로 대문자로 변경해주는 기능 -->
+    <input type="text" id="in3" placeholder="아이디" onchange="changeToUpper()"> 
+    <script>
+        function changeToUpper(){
+            var v = document.getElementById('in3').value
+            document.getElementById("in3").value = v.toUpperCase()
+        }
+    </script>
+    <hr>
+
+    <!-- 마우스 이벤트 -->
+    <!-- over, out, move -->
+    <div onmouseover="over(this)" onmouseout="out(this)" onmousemove="move(this)" style="width: 200px; height: 100px; background-color : yellow;"></div>
+    <script>
+        function over(e){
+            e.style.backgroundColor = "lightgreen"
+            e.style.border = "3px solid red"
+        }
+
+        function out(e){
+            e.style.backgroundColor = "yellow"
+            e.style.border = "" //빈문자열을 주면 스타일을 주지 않은 것이 되어 기본스타일로 돌아간다.
+        }
+
+        var a = 0
+        function move(e){
+            a++
+            e.innerHTML = a
+        }
+    </script>
+
+    <!-- 마우스 좌표 얻어보기 -->
+    <!-- 이벤트 리스너를 사용해서 -->
+    <div id="kk" style="width: 500px; height: 300px; background-color : yellowgreen;"></div>
+    <script>
+        document.getElementById("kk").addEventListener("mousemove", function(ev){
+            //이벤트 리스너 함수에는 이벤트의 정보를 가지고 있는 객체가 자동으로 인수로 전달된다.
+            var s = "모니터 기준 좌표: " + ev.screenX + ", " + ev.screenY + "<br>"
+            s += "브라우저 기준 좌표: " + ev.clientX + ", " + ev.clientY + "<br>"
+            s += "해당 영역 기준 좌표: " + ev.offsetX + ", " + ev.offsetY + "<br>"
+            document.getElementById("kk").innerHTML = s
+        })
+    </script>
+
+    <!-- 마우스 다운 & 업 -->
+    <button id="btn">Button</button>
+    <script>
+        var btn = document.getElementById("btn")
+        //mousedown
+        btn.addEventListener("mousedown", function(){
+            btn.style.backgroundColor = "#FF0000AA" //RGBA
+        })
+
+        //mouseup
+        var up = function(){
+            btn.style.backgroundColor = "" //RGBA
+        }
+        btn.addEventListener("mouseup", up)
+
+    </script>
+</body>
+</html>

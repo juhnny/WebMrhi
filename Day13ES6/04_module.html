@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>module</title>
+
+        <!--  Module -->
+        <!-- 하나의 .js 문서에서 다른 .js 문서의 변수나 함수, 클래스 등을 사용하는 기법 -->
+        <!-- 원래 JS는 하나의 HTML 문서 안에서 차례대로 실행되니 순서만 지키면 어느 변수, 함수, 클래스나 쓸 수 있다. -->
+        <!-- 모듈은 JS만 독립적으로 쓸 수 있게 되자 만들어진 기법 -->
+
+        <!-- 로컬 환경에서는 작동하지 않고 웹서버나 NodeJS에서만 동작. 인터프리터가 필요하니까. -->
+
+        <!-- 아래처럼 외부 .js 문서를 src 속성으로 읽어올 수도 있지만 이건 html에서 쓰는 것이고 -->
+        <script src="./module_one.js"></script>
+
+        <!-- 여기는 html이라서 module을 사용할 때는 type 속성으로 알려줘야 함 -->
+        <script type="module">
+            show()
+
+            //이 영역은 JS 영역
+            // .js 문서(script문) 안에서 외부 .js 문서를 이용하려면?
+            // export default인 변수/함수/클래스는 바로 import
+            import output from './module_two.js'
+            //  default가 없이 export된 변수/함수/클래스는 구조분해할당으로 import
+            import {addHeadingElementToBody} from './module_two.js'
+            //변수명을  as 키워드로 바꾸는 것이 가능함
+            import {name, age as myAge} from './module_two.js'
+
+            //같은 문서에서 가져오는 거라면 한방에 처리 가능
+            // import {addHeadingElementToBody, name, age as myAge} from './module_two.js'
+
+            output()
+            addHeadingElementToBody("new title")
+            alert(name + " / " + myAge + "<br>")
+
+        </script>
+    </head>
+</html>

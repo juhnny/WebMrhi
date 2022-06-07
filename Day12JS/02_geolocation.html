@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>위치정보탐색</title>
+    <script>
+        function clickBtn(){
+             //네트워크 작업이므로 시간이 걸린다. 
+             //내 위치를 얻었을 때 파라미터에 전달한 함수가 자동 발동
+             //이 함수로는 위치정보가 인수로 전달됨
+            navigator.geolocation.getCurrentPosition( function(pos){
+                var lat = pos.coords.latitude
+                var lng = pos.coords.longitude
+
+                document.getElementById("hh").innerHTML = lat + ", " + lng
+            })
+        }
+
+        var wathcer 
+        var cnt = 0 
+        function clickBtn2(){
+            watcher = navigator.geolocation.watchPosition(function(pos){
+                var lat = pos.coords.latitude
+                var lng = pos.coords.longitude
+                cnt++
+                document.getElementById("hh").innerHTML = lat + ", " + lng + " - " + cnt
+            })
+        }   
+
+        function clickBtn3(){
+            navigator.geolocation.clearWatch(wathcer)
+        }
+    </script>
+</head>
+<body>
+    <button onclick="clickBtn()">My location</button>
+    <button onclick="clickBtn2()">Watch Position</button>
+    <button onclick="clickBtn3()">Clear Watch</button>
+    
+    <h3 id="hh">Location Result</h3>
+</body>
+</html>

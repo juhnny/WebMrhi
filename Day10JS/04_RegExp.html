@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regular Expression 정규표현식</title>
+</head>
+<body>
+    <h2>유효성 검사</h2>
+
+    <input type="text" id="in1">
+    <button onclick="checkReg()">검사</button>
+    <p id="p1">결과</p>
+
+    <script>
+        //검증용 정규표현식 - 원하는 패턴에 맞는 입력인지 확인
+        function checkReg(){
+            var value= document.getElementById('in1').value
+            var p= document.getElementById('p1')
+
+            //정규표현식 만들기
+            var regExp = /^[a-zA-Z]+$/ //그렇게 보이지 않겠지만 이게 정규표현식 객체. 영문자가 1개 이상
+            regExp= /a/          // a가 포함된 모든...
+            regExp= /A/          // A가 포함된 모든...
+            regExp= /ab/         // ab가 포함된 모든...
+            regExp= /^a/         // 시작이 무조건 a인...
+            regExp= /^[a-z]/     // 시작이 무조건 영어소문자..
+            regExp= /a$/         // 끝이 무조건 a인...
+            regExp= /ab$/         // 끝이 무조건 ab인...
+            regExp= /^a$/         // 무조건 a 1개 (시작이 a..끝이 a...가 아님!!)
+            regExp= /^ab$/         // 무조건 ab 1개 (시작이 ab..끝이 ab...가 아님!!)
+            regExp= /^[a-z]$/         // 무조건 영어소문자 1개
+            regExp= /^[a-zA-Z]$/      // 무조건 영어문자 1개
+            regExp= /^[a-zA-Z0-9]$/   // 무조건 영어문자 or 숫자 1개
+            regExp= /^[a-z]{2}$/      // 무조건 영어소문자 2개
+            regExp= /^[a-z]{2,4}$/    // 무조건 영어소문자 2~4개
+            regExp= /^[a-z]{4,}$/     // 무조건 영어소문자 4개 이상
+            regExp= /^\w{4,}$/        // 문자 or 숫자 4개 이상
+            regExp= /^[a-z]*$/        // 영어소문자 0개 이상 [값이 없어도 OK]
+            regExp= /^[a-z]+$/        // 영어소문자 1개 이상 
+            regExp= /^[a-z]?$/        // 영어소문자 0개 또는 1개 [값이 없어도 OK]
+            regExp= /^[0-9]$/         // 숫자 1개
+            regExp= /^[5-9]$/         // (5~9)숫자 1개 
+            regExp= /^\d$/            // 숫자 1개
+            regExp= /^\d\d\d$/        // 숫자 3개
+            regExp= /^\d{3,4}$/        // 숫자 3,4개
+            regExp= /^\d\dh\d\dh\d\d$/            // 숫자 2개 뒤에 반드시 h 숫자 2개 h 숫자2개
+            regExp= /^\d\d\d\d-\d\d-\d\d$/            // ####-##-## [생년월일]
+            regExp= /^[a-zA-Z0-9!#&-]+@[a-z]+.[a-z]*$/         //이메일 검증은 정답이 없음.  ###@##.##
+            regExp= /^http/     //시작이 http로 시작하는지.
+
+            //패턴에 / 1개..
+            regExp= /^\/$/   // /를 특수문자로 인식하도록 역슬래시 추가.
+
+
+            //정규식 검사 방법 2가지.
+
+            //1. String  .match() 메소드
+            // if( value.match(regExp) ) p.innerHTML="OK"
+            // else p.innerHTML="요구하는 형식이 아닙니다"
+
+            //2. RegExp 객체의 .test() 메소드
+            if(regExp.test(value)) p.innerHTML = "OK"
+            else p.innerHTML = "요구하는 형식이 아닙니다"
+        }
+        
+    </script>
+</body>
+</html>

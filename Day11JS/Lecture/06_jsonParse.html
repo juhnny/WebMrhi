@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JSON 파싱</title>
+    </head>
+    <body>
+        
+        <h3 id="target"></h3>
+        <button onclick="aaa()">jsonObject 파싱</button>
+        <button onclick="bbb()">jsonArray 파싱</button>
+
+        <script>
+            function aaa(){
+                //json object 파싱 연습
+
+                var s= '{"name":"sam", "age":20}'
+
+                //JSON문자열을 객체로 변환
+                var person= JSON.parse(s)
+                document.getElementById('target').innerHTML= person.name+" : " + person.age
+            }
+
+            function bbb(){
+                // json array를 배열객체 변환
+                var ss= '['+
+                    '{"name":"sam", "age":20},' +
+                    '{"name":"robin", "age":25},' +
+                    '{"name":"hong", "age":30}' +
+                ']'
+
+                var people= JSON.parse(ss)
+                //people을 배열임
+                var s=""
+                for(var i=0; i<people.length; i++){
+                    s +=  people[i].name +" : " + people[i].age +"<br>"
+                }
+
+                document.getElementById('target').innerHTML= s
+            }
+        </script>
+
+        <hr>
+
+        <!-- JS의 객체를 JSON문자열로 변환 -->
+        <button onclick="ccc()">object to json</button>
+        <button onclick="ddd()">object array to jsonArray</button>
+        <h3 id="aa"></h3>
+
+        <script>
+            function ccc(){
+                //JS의 객체
+                var person= {
+                    name:"sam",
+                    age:20
+                }
+
+                //object to json string....
+                var json= JSON.stringify(person)
+                document.getElementById('aa').innerHTML= json
+            }
+
+
+            function ddd(){
+
+                var objArray= [
+                    {name:"sam", age:20, address:{nation:"korea", city:"seoul"}},
+                    {name:"robin", age:23, address:{nation:"japan", city:"tokyo"}},
+                    {name:"hong", age:25, address:{nation:"usa", city:"new york"}}
+                ]
+
+                var json= JSON.stringify(objArray)
+                document.getElementById('aa').innerHTML= json
+
+
+            }
+
+        </script>
+
+    </body>
+</html>
