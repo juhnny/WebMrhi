@@ -22,9 +22,9 @@
             //이 영역은 JS 영역
             // .js 문서(script문) 안에서 외부 .js 문서를 이용하려면?
             // export default인 변수/함수/클래스는 바로 import
-            import output from './module_two.js'
+            // import output from './module_two.js'
             //  default가 없이 export된 변수/함수/클래스는 구조분해할당으로 import
-            import {addHeadingElementToBody} from './module_two.js'
+            import output, {addHeadingElementToBody} from './module_two.js'
             //변수명을  as 키워드로 바꾸는 것이 가능함
             import {name, age as myAge} from './module_two.js'
 
