@@ -16,7 +16,7 @@
     $phoneNum3 = $_POST['phoneNum3'];
     $phoneNum = "$phoneNum1-$phoneNum2-$phoneNum3";
     
-    $db = mysqli_connect("localhost", "iwibest", "de2154178!", "iwibest");
+    // $db = mysqli_connect("localhost", , ,);
     $query = "SELECT * FROM signup_practice WHERE user_id = '$userId'";
     $result = mysqli_query($db, $query);
     if($result){
