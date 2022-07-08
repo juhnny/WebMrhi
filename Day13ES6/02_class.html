@@ -69,11 +69,16 @@
                 output = function(){
                     document.write("output() " + this.name + " : " + this.age + " : " + this.address + "<br>")
                 }
+
+                aaa = () => {
+                    document.write("aaa() " + this.name + " : " + this.age + " : " + this.address + "<br>")
+                }
             }
             var p = new Person()
             document.write(p.name + " : " + p.age + " : " + p.address + "<br>")
             p.show()
             p.output()
+            p.aaa()
         </script>
         <hr>
         <script>
